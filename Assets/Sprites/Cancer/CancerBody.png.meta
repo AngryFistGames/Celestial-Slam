@@ -1,0 +1,535 @@
+fileFormatVersion: 2
+guid: ac52076c0fd382c419998cd40d9ac991
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4610035208151226281
+    second: CancerEye2
+  - first:
+      213: 7324913424525407980
+    second: CancerEye1
+  - first:
+      213: -2219106903269536361
+    second: CancerMouth1
+  - first:
+      213: 6965702499342704794
+    second: CancerMouth3
+  - first:
+      213: 726122749527633083
+    second: CancerMouth2
+  - first:
+      213: 6007331264851732050
+    second: CancerLeftPincer1
+  - first:
+      213: -70694703287960853
+    second: CancerEyeStalks
+  - first:
+      213: 8359439319206115711
+    second: CancerRightPincer1
+  - first:
+      213: 7228922808571679742
+    second: CancerLeftPincer2
+  - first:
+      213: 6290853114590310890
+    second: CancerBody
+  - first:
+      213: -3682285424284145987
+    second: CancerRightPincer2
+  - first:
+      213: -8979767710740586014
+    second: CancerLeftLeg1
+  - first:
+      213: -1122923225385003914
+    second: CancerRightLeg1
+  - first:
+      213: 9030603057432032734
+    second: CancerLeftLeg2
+  - first:
+      213: -8267731997714680656
+    second: CancerRightLeg2
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CancerEye2
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 325
+        width: 39
+        height: 39
+      alignment: 9
+      pivot: {x: 0.541777, y: 0.33288965}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7582a18376dd500c0800000000000000
+      internalID: -4610035208151226281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerEye1
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 323
+        width: 47
+        height: 42
+      alignment: 9
+      pivot: {x: 0.49999967, y: 0.09913345}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce6b35753f157a560800000000000000
+      internalID: 7324913424525407980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerMouth1
+      rect:
+        serializedVersion: 2
+        x: 281
+        y: 335
+        width: 73
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79d800067062431e0800000000000000
+      internalID: -2219106903269536361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerMouth3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 306
+        width: 42
+        height: 38
+      alignment: 9
+      pivot: {x: 0.2672388, y: 0.4142456}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a906f5c64852ba060800000000000000
+      internalID: 6965702499342704794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerMouth2
+      rect:
+        serializedVersion: 2
+        x: 311
+        y: 304
+        width: 67
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5162121, y: 0.7088881}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbcace42bc4b31a00800000000000000
+      internalID: 726122749527633083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerLeftPincer1
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 124
+        width: 68
+        height: 168
+      alignment: 9
+      pivot: {x: 0.78752846, y: 0.02801214}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 256e59905f35e5350800000000000000
+      internalID: 6007331264851732050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerEyeStalks
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 269
+        width: 41
+        height: 33
+      alignment: 9
+      pivot: {x: 0.5397395, y: 0.18730025}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: beaf40bba87d40ff0800000000000000
+      internalID: -70694703287960853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerRightPincer1
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 101
+        width: 63
+        height: 192
+      alignment: 9
+      pivot: {x: 0.12930638, y: 0.061552446}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f79b6b645c1b20470800000000000000
+      internalID: 8359439319206115711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerLeftPincer2
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 142
+        width: 60
+        height: 110
+      alignment: 9
+      pivot: {x: 0.17413355, y: 0.193884}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef352a17efa425460800000000000000
+      internalID: 7228922808571679742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 81
+        width: 96
+        height: 105
+      alignment: 9
+      pivot: {x: 0.52828664, y: 0.17413454}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae1b05dc3999d4750800000000000000
+      internalID: 6290853114590310890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerRightPincer2
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 136
+        width: 56
+        height: 126
+      alignment: 9
+      pivot: {x: 0.7521575, y: 0.13792722}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db6e1fb8ae4e5ecc0800000000000000
+      internalID: -3682285424284145987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerLeftLeg1
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 11
+        width: 34
+        height: 45
+      alignment: 9
+      pivot: {x: 0.64376336, y: 0.8500041}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e1e8cb08d4716380800000000000000
+      internalID: -8979767710740586014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerRightLeg1
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 12
+        width: 36
+        height: 45
+      alignment: 9
+      pivot: {x: 0.40948063, y: 0.837935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67414e8a6439a60f0800000000000000
+      internalID: -1122923225385003914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerLeftLeg2
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 10
+        width: 30
+        height: 49
+      alignment: 9
+      pivot: {x: 0.518102, y: 0.9322709}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed5fac172a5235d70800000000000000
+      internalID: 9030603057432032734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerRightLeg2
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 11
+        width: 27
+        height: 47
+      alignment: 9
+      pivot: {x: 0.41953984, y: 0.88133234}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b4f51a6d8d134d80800000000000000
+      internalID: -8267731997714680656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
