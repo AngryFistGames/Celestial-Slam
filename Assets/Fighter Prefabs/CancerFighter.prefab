@@ -236,10 +236,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   technique: {fileID: 0}
+  ammo: {fileID: 0}
   priorityPower: 0
   isAttacking: 0
   damagePower: 0
   SweetSpot: 1
+  isProjectile: 0
   knockback: {x: 0, y: 0}
 --- !u!1 &953209296794254540
 GameObject:
@@ -373,6 +375,7 @@ MonoBehaviour:
   weight: 0
   attackPower: 1
   defensePower: 1
+  HP: 0
   damage: 0
   isBlocking: 0
   anim: {fileID: 0}
@@ -415,6 +418,8 @@ MonoBehaviour:
   isDamaged: 0
   attackingWith: 0
   currentCombo: 0
+  localHoriz: 0
+  localVert: 0
 --- !u!1 &953209296813171068
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,10 +574,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   technique: {fileID: 0}
+  ammo: {fileID: 0}
   priorityPower: 0
   isAttacking: 0
   damagePower: 0
   SweetSpot: 0
+  isProjectile: 0
   knockback: {x: 0, y: 0}
 --- !u!1 &953209296915079613
 GameObject:
@@ -1496,10 +1503,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   technique: {fileID: 0}
+  ammo: {fileID: 0}
   priorityPower: 0
   isAttacking: 0
   damagePower: 0
   SweetSpot: 0
+  isProjectile: 0
   knockback: {x: 0, y: 0}
 --- !u!1 &953209297749751973
 GameObject:
@@ -1572,10 +1581,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   technique: {fileID: 0}
+  ammo: {fileID: 0}
   priorityPower: 0
   isAttacking: 0
   damagePower: 0
   SweetSpot: 1
+  isProjectile: 0
   knockback: {x: 0, y: 0}
 --- !u!1 &953209297865319818
 GameObject:
@@ -1812,10 +1823,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   technique: {fileID: 0}
+  ammo: {fileID: 0}
   priorityPower: 0
   isAttacking: 0
   damagePower: 0
   SweetSpot: 1
+  isProjectile: 0
   knockback: {x: 0, y: 0}
 --- !u!1 &953209298241341970
 GameObject:
@@ -1889,8 +1902,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   technique: {fileID: 0}
+  ammo: {fileID: 0}
   priorityPower: 0
   isAttacking: 0
   damagePower: 0
   SweetSpot: 0
+  isProjectile: 0
   knockback: {x: 0, y: 0}

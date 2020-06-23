@@ -127,8 +127,6 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("grounded", grounded);
         anim.SetBool("leap", lineRenderer.enabled);
         anim.SetFloat("speed", speed);
-        anim.SetInteger("attack", attackingWith);
-        anim.SetBool("damaged", isDamaged);
 
         if (leaping)
         {
