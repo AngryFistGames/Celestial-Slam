@@ -58,6 +58,7 @@ public class PlayerControl : MonoBehaviour
     protected float maxComboDelay = 0.9f;
     public float localHoriz;
     public float localVert;
+    public GameObject Shaker;
 
     private void Awake()
     {
@@ -66,6 +67,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
+        Shaker = GameObject.FindGameObjectWithTag("Shake");
         HP = fighter.HitPoints;
         weight = fighter.weight;
         jumpHeight = fighter.jumpHeight;
@@ -216,6 +218,7 @@ public class PlayerControl : MonoBehaviour
                     if (Horiz == 0)
                     {
                         isMoving = false;
+                    speed = 0;
                     }
                     break;
                 case "Cieling":
@@ -241,7 +244,8 @@ public class PlayerControl : MonoBehaviour
                     if (Horiz == 0)
                     {
                         isMoving = false;
-                    }
+                    speed = 0;
+                }
                     break;
                 case "Left":
                 if (canMove)
@@ -266,7 +270,8 @@ public class PlayerControl : MonoBehaviour
                     if (Vert == 0)
                     {
                         isMoving = false;
-                    }
+                    speed = 0;
+                }
                     break;
                 case "Right":
                 if (canMove)
@@ -291,7 +296,8 @@ public class PlayerControl : MonoBehaviour
                     if (Vert == 0)
                     {
                         isMoving = false;
-                    }
+                    speed = 0;
+                }
                     break;
                 default:
                     mover = new Vector2(Horiz * moveSpeed, 0);
@@ -311,10 +317,11 @@ public class PlayerControl : MonoBehaviour
                     if (Horiz == 0)
                     {
                         isMoving = false;
-                    }
+                    speed = 0;
+                }
                     break;
             }
-        
+
         if (grounded == true)
         {
             leaping = false;
@@ -340,14 +347,12 @@ public class PlayerControl : MonoBehaviour
                         {
                             cancelled = true;
                             lineRenderer.enabled = false;
-                            anim.SetTrigger("cancel");
                             canMove = true;
                             action = false;
                         }
                         if ((player.GetButtonDown("Attack") || (player.GetButtonDown("Special"))))
                         {
                             lineRenderer.enabled = false;
-                            anim.SetTrigger("cancel");
                             cancelled = true;
                             canMove = true;
 
@@ -363,31 +368,33 @@ public class PlayerControl : MonoBehaviour
                         if ((player.GetButtonDown("Attack") || (player.GetButtonDown("Special"))))
                         {
                             lineRenderer.enabled = false;
-                            anim.SetTrigger("cancel");
                             cancelled = true;
                             canMove = true;
 
                         }
                     }
                 }
-            
 
-                    if (player.GetButtonUp("Leap") || player.GetNegativeButtonUp("Leap"))
+
+                if (player.GetButtonUp("Leap") || player.GetNegativeButtonUp("Leap"))
+                {
+                    if (!cancelled)
                     {
-                        if (!cancelled)
-                        {
-                            Leap();
-                        }
-                        cancelled = false;
-                        canMove = true;
-                    action = false;
+                        Leap();
                     }
+                    cancelled = false;
+                    canMove = true;
+                    action = false;
                 }
+            }
+        }
             if (canMove) //if the fighter is able to move
             {
                 if (actionCooldown >= 0)
                 {
-                    if (player.GetButtonDown("Attack") && localHoriz == 0 && localVert == 0)
+                if (player.GetButtonDown("Attack") && localHoriz == 0 && localVert == 0)
+                {
+                    if (grounded)
                     {
                         if (currentCombo < 1)
                         {
@@ -406,21 +413,35 @@ public class PlayerControl : MonoBehaviour
                             canMove = false;
                         }
                     }
-                                if (player.GetButtonDown("Attack") && localHoriz > 0.5f)
-                            {
-                                
-                                attack = fighter.techniques[2];
-                                anim.Play(attack.animationName);
-                                lastComboTime = Time.time;
-                                currentCombo++;
-                        action = true;
-                            actionCooldown = -attack.recharge;
-                            canMove = false;
-                            }
-
-                    if (player.GetButtonDown("Attack") && localVert < -0.75f)
+                    if (!grounded)
                     {
+                        attack = fighter.techniques[5];
+                        anim.Play(attack.animationName);
+                        lastComboTime = Time.time;
+                        currentCombo++;
+                        action = true;
+                        actionCooldown = -attack.recharge;
+                        canMove = false;
+                    }
+                }
+                if (player.GetButtonDown("Attack") && localHoriz > 0.5f)
+                {
+                    if (grounded)
+                    {
+                        attack = fighter.techniques[2];
+                        anim.Play(attack.animationName);
+                        lastComboTime = Time.time;
+                        currentCombo++;
+                        action = true;
+                        actionCooldown = -attack.recharge;
+                        canMove = false;
+                    }
+                }
 
+                if (player.GetButtonDown("Attack") && localVert < -0.75f)
+                {
+                    if (grounded)
+                    {
                         attack = fighter.techniques[3];
                         anim.Play(attack.animationName);
                         lastComboTime = Time.time;
@@ -429,9 +450,12 @@ public class PlayerControl : MonoBehaviour
                         actionCooldown = -attack.recharge;
                         canMove = false;
                     }
-                    if (player.GetButtonDown("Attack") && localVert > 0.75f)
-                    {
+                }
 
+                if (player.GetButtonDown("Attack") && localVert > 0.75f)
+                {
+                    if (grounded)
+                    {
                         attack = fighter.techniques[4];
                         anim.Play(attack.animationName);
                         lastComboTime = Time.time;
@@ -441,18 +465,14 @@ public class PlayerControl : MonoBehaviour
                         canMove = false;
                     }
                 }
+                }
                     
                     if (player.GetButtonDown("Special"))
                     {
                     }
                 }
-            }
-        
-        
-        if (grounded == false)
-        {
-            rigidBody.AddForce(mover / 1.5f);
-        }
+            
+     
 
     }
     void ProccessInput()
@@ -512,6 +532,11 @@ public class PlayerControl : MonoBehaviour
                     lineRenderer.SetPosition(1, hitInfo.point);
                     storedTarget = foe.GetComponent<GravBody>().attractor;
                 }
+                if (foe != null && foe.tag == "HitBox")
+                {
+                    LeapTarget = hitInfo.point;
+                    storedTarget = Target;
+                }
                 if (wall == null && foe == null)
                 {
 
@@ -544,19 +569,35 @@ public class PlayerControl : MonoBehaviour
 
         }
 
-            if (LeapTarget != null)
+        if (LeapTarget != null && storedTarget != Target)
         {
             Target = storedTarget;
-            grounded = false;
-            leaping = true;
-        }
         
+            //grounded = false;
+            //leaping = true;
+            transform.position = LeapTarget;
+            if (Target.tag == "Floor" || Target.tag == "Cieling")
+            {
+                Shaker.GetComponent<shake>().Shaking("top");
+            }
+            if (Target.tag == "Right" || Target.tag == "Left")
+            {
+                Shaker.GetComponent<shake>().Shaking("side");
+            }
+        }
+
+        if (LeapTarget != null && storedTarget == Target)
+        {
+            transform.position = LeapTarget;
+
+        }
         lineRenderer.enabled = false;
     }
    public void Land()
     {
-        canInput = !canInput;
-        canMove = !canMove;
+        canInput = true;
+        canMove = true;
+        action = false;
     }
 
     public void OnTriggerStay2D(Collider2D collision)

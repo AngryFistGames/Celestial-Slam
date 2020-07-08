@@ -13,6 +13,7 @@ TagManager:
   - HitBox
   - SweetSpot
   - HurtBox
+  - Shake
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - Team Two
   - Team Three
   - Team Four
-  - 
+  - Attack
   - 
   - 
   - 

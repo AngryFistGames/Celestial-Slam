@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 953209296729883460}
   - component: {fileID: 953209296729883461}
   - component: {fileID: 953209296729883482}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: XSweet
   m_TagString: HitBox
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ MonoBehaviour:
     m_Bits: 256
   foe:
     serializedVersion: 2
-    m_Bits: 7680
+    m_Bits: 15872
   aimSpeed: 70
   lineRenderer: {fileID: 953209296996354344}
   aimRange: 80
@@ -420,6 +420,7 @@ MonoBehaviour:
   currentCombo: 0
   localHoriz: 0
   localVert: 0
+  Shaker: {fileID: 0}
 --- !u!1 &953209296813171068
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,7 +514,7 @@ GameObject:
   - component: {fileID: 953209296881693986}
   - component: {fileID: 953209296881693987}
   - component: {fileID: 953209296881693984}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: YHitbox
   m_TagString: HitBox
   m_Icon: {fileID: 0}
@@ -823,6 +824,7 @@ Transform:
   - {fileID: 953209296559338815}
   - {fileID: 953209297670425585}
   - {fileID: 953209297457750121}
+  - {fileID: 5888914047203688076}
   m_Father: {fileID: 953209296794254531}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1442,7 +1444,7 @@ GameObject:
   - component: {fileID: 953209297719535193}
   - component: {fileID: 953209297719535198}
   - component: {fileID: 953209297719535199}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: XHitbox
   m_TagString: HitBox
   m_Icon: {fileID: 0}
@@ -1521,7 +1523,7 @@ GameObject:
   - component: {fileID: 953209297749751994}
   - component: {fileID: 953209297749751992}
   - component: {fileID: 953209297749751995}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: XSweet
   m_TagString: SweetSpot
   m_Icon: {fileID: 0}
@@ -1763,7 +1765,7 @@ GameObject:
   - component: {fileID: 953209298055553531}
   - component: {fileID: 953209298055553528}
   - component: {fileID: 953209298055553529}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: YSweet
   m_TagString: SweetSpot
   m_Icon: {fileID: 0}
@@ -1841,7 +1843,7 @@ GameObject:
   - component: {fileID: 953209298241341971}
   - component: {fileID: 953209298241341969}
   - component: {fileID: 953209298241341968}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: XHitboxBack
   m_TagString: HitBox
   m_Icon: {fileID: 0}
@@ -1909,3 +1911,33 @@ MonoBehaviour:
   SweetSpot: 0
   isProjectile: 0
   knockback: {x: 0, y: 0}
+--- !u!1 &4968628412381527584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5888914047203688076}
+  m_Layer: 0
+  m_Name: placehold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5888914047203688076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4968628412381527584}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 953209297013585603}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
