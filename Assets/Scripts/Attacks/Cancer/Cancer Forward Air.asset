@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48b118c026213d341bd3862207ff8ea7, type: 3}
-  m_Name: Cancer Basic Down
+  m_Name: Cancer Forward Air
   m_EditorClassIdentifier: 
-  attackName: Whirl Claw
-  animationName: CancerDownAAttack
-  damagePower: 11
-  priorityPower: 4
-  knockback: {x: 6, y: 8}
+  attackName: Double Air Pinch
+  animationName: CancerForwardAir
+  damagePower: 21
+  priorityPower: 3
+  knockback: {x: 5, y: 3}
   chargable: 0
-  recharge: 0.5
+  recharge: 0.6
   projectile: {fileID: 0}

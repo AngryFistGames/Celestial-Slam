@@ -48,6 +48,7 @@ public class PlayerControl : MonoBehaviour
     public GravAttractor Target;
     [SerializeField] protected GravAttractor storedTarget;
     public Vector2 LeapTarget;
+    public float leapCooldown = 3f;
     public float aim;
     public float aimExtend = 0.25f;
     public bool isDamaged = false;
@@ -84,27 +85,7 @@ public class PlayerControl : MonoBehaviour
     {
         GetComponent<GravBody>().attractor = Target;
         grounded = Physics2D.OverlapCircle(GroundCheck.position, checkRadius, floor);
-        if (Physics2D.OverlapCircle(GroundCheck.position, checkRadius, foe))
-        {
-            switch (GetComponent<GravBody>().attractor.gameObject.tag)
-            {
-                case "Floor":
-                    rigidBody.AddForce(new Vector2(0, jumpHeight/1.5f), ForceMode2D.Force);
-                    break;
-                case "Cieling":
-                    rigidBody.AddForce(new Vector2(0, -jumpHeight/1.5f), ForceMode2D.Force);
-                    break;
-                case "Left":
-                    rigidBody.AddForce(new Vector2(jumpHeight/ 1.5f, 0), ForceMode2D.Force);
-                    break;
-                case "Right":
-                    rigidBody.AddForce(new Vector2(-jumpHeight/ 1.5f, 0), ForceMode2D.Force);
-                    break;
-                default:
-                    rigidBody.AddForce(new Vector2(0, jumpHeight/ 1.5f), ForceMode2D.Force);
-                    break;
-            }
-        }
+       
         if (grounded)
         {
             jumpCount = 0;
@@ -116,6 +97,7 @@ public class PlayerControl : MonoBehaviour
             ProccessInput();
         }
         actionCooldown += Time.deltaTime;
+        leapCooldown += Time.deltaTime;
         if (Time.time - lastComboTime >= maxComboDelay)
         {
             currentCombo = 0;
@@ -130,10 +112,7 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("leap", lineRenderer.enabled);
         anim.SetFloat("speed", speed);
 
-        if (leaping)
-        {
-            rigidBody.position = Vector2.Lerp(rigidBody.position, LeapTarget, leapSpeed);
-        }
+        
         if (canMove)
         {
             switch (GetComponent<GravBody>().attractor.gameObject.tag)
@@ -335,7 +314,7 @@ public class PlayerControl : MonoBehaviour
 
 
 
-                if (!cancelled)
+                if ((!cancelled) && leapCooldown >= 3f)
                 {
                     if (player.GetButton("Leap"))
                     {
@@ -346,6 +325,7 @@ public class PlayerControl : MonoBehaviour
                         if (player.GetButtonDown("Attack") || (player.GetButtonDown("Special")))
                         {
                             cancelled = true;
+                            storedTarget = Target;
                             lineRenderer.enabled = false;
                             canMove = true;
                             action = false;
@@ -353,6 +333,7 @@ public class PlayerControl : MonoBehaviour
                         if ((player.GetButtonDown("Attack") || (player.GetButtonDown("Special"))))
                         {
                             lineRenderer.enabled = false;
+                            storedTarget = Target;
                             cancelled = true;
                             canMove = true;
 
@@ -367,7 +348,9 @@ public class PlayerControl : MonoBehaviour
 
                         if ((player.GetButtonDown("Attack") || (player.GetButtonDown("Special"))))
                         {
+                           
                             lineRenderer.enabled = false;
+                            storedTarget = Target;
                             cancelled = true;
                             canMove = true;
 
@@ -378,7 +361,7 @@ public class PlayerControl : MonoBehaviour
 
                 if (player.GetButtonUp("Leap") || player.GetNegativeButtonUp("Leap"))
                 {
-                    if (!cancelled)
+                    if ((!cancelled) && leapCooldown >= 3)
                     {
                         Leap();
                     }
@@ -392,7 +375,7 @@ public class PlayerControl : MonoBehaviour
             {
                 if (actionCooldown >= 0)
                 {
-                if (player.GetButtonDown("Attack") && localHoriz == 0 && localVert == 0)
+                if (player.GetButtonDown("Attack") && localHoriz <= 0.5 && localVert == 0)
                 {
                     if (grounded)
                     {
@@ -410,7 +393,6 @@ public class PlayerControl : MonoBehaviour
                             anim.Play(attack.animationName);
                             lastComboTime = Time.time;
                             currentCombo++;
-                            canMove = false;
                         }
                     }
                     if (!grounded)
@@ -435,6 +417,15 @@ public class PlayerControl : MonoBehaviour
                         action = true;
                         actionCooldown = -attack.recharge;
                         canMove = false;
+                    }
+                    if (!grounded)
+                    {
+                        attack = fighter.techniques[6];
+                        anim.Play(attack.animationName);
+                        lastComboTime = Time.time;
+                        currentCombo++;
+                        action = true;
+                        actionCooldown = -attack.recharge;
                     }
                 }
 
@@ -518,6 +509,8 @@ public class PlayerControl : MonoBehaviour
             RaycastHit2D hitInfo = Physics2D.Raycast(new Vector3(LeapAim.position.x, LeapAim.localPosition.y + aimExtend, LeapAim.position.z), LeapAim.up);
             if (hitInfo)
             {
+                GameObject attck = hitInfo.transform.gameObject;
+               
                 GravAttractor wall = hitInfo.transform.GetComponent<GravAttractor>();
                 GravBody foe = hitInfo.transform.GetComponent<GravBody>();
                 if (wall != null)
@@ -532,14 +525,21 @@ public class PlayerControl : MonoBehaviour
                     lineRenderer.SetPosition(1, hitInfo.point);
                     storedTarget = foe.GetComponent<GravBody>().attractor;
                 }
-                if (foe != null && foe.tag == "HitBox")
+                if (attck != null)
                 {
-                    LeapTarget = hitInfo.point;
-                    storedTarget = Target;
+                    PlayerControl Oattack = attck.GetComponent<PlayerControl>();
+                    Projectile ammo = attck.GetComponent<Projectile>();
+                    if ((Oattack != null && Oattack.attack != null) || ammo != null)
+                    {
+                        storedTarget = Target;
+                        lineRenderer.SetPosition(0, LeapAim.position);
+                        lineRenderer.SetPosition(1, hitInfo.point);
+                    }
+                    
                 }
                 if (wall == null && foe == null)
                 {
-
+                    storedTarget = Target;
                     lineRenderer.SetPosition(0, LeapAim.position);
                     lineRenderer.SetPosition(1, LeapAim.position + LeapAim.up * 1000);
                 }
@@ -588,10 +588,12 @@ public class PlayerControl : MonoBehaviour
 
         if (LeapTarget != null && storedTarget == Target)
         {
+            storedTarget = Target;
             transform.position = LeapTarget;
 
         }
         lineRenderer.enabled = false;
+        leapCooldown = 0;
     }
    public void Land()
     {

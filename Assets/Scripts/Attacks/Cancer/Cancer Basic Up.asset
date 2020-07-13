@@ -16,7 +16,7 @@ MonoBehaviour:
   animationName: CancerUpAAttack
   damagePower: 7
   priorityPower: 3
-  knockback: {x: 5, y: 20}
+  knockback: {x: 3, y: 10}
   chargable: 0
   recharge: 0.5
   projectile: {fileID: 0}
