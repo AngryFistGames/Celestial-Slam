@@ -46,6 +46,7 @@ public class PlayerControl : MonoBehaviour
     public LineRenderer lineRenderer;
     public float aimRange;
     public GravAttractor Target;
+    public string sTarget;
     [SerializeField] protected GravAttractor storedTarget;
     public Vector2 LeapTarget;
     public float leapCooldown = 3f;
@@ -102,6 +103,7 @@ public class PlayerControl : MonoBehaviour
         {
             currentCombo = 0;
         }
+        sTarget = Target.gameObject.tag;
     }
 
     public virtual void FixedUpdate()
@@ -165,7 +167,7 @@ public class PlayerControl : MonoBehaviour
     {
         Horiz = player.GetAxis("Horizontal");
         Vert = player.GetAxis("Vertical");
-        if (jumpCount <= maxJumpCount)
+        if ((jumpCount <= maxJumpCount))
         {
             jump = player.GetButtonDown("Jump");
         }
@@ -322,7 +324,7 @@ public class PlayerControl : MonoBehaviour
                         action = true;
                         LeapTarget = AimLeap(1);
                         canMove = false;
-                        if (player.GetButtonDown("Attack") || (player.GetButtonDown("Special")))
+                        if (jump || isDamaged || player.GetButtonDown("Attack") || (player.GetButtonDown("Special")))
                         {
                             cancelled = true;
                             storedTarget = Target;
@@ -330,7 +332,7 @@ public class PlayerControl : MonoBehaviour
                             canMove = true;
                             action = false;
                         }
-                        if ((player.GetButtonDown("Attack") || (player.GetButtonDown("Special"))))
+                        if ((jump || isDamaged || player.GetButtonDown("Attack") || player.GetButtonDown("Special")))
                         {
                             lineRenderer.enabled = false;
                             storedTarget = Target;
@@ -346,7 +348,7 @@ public class PlayerControl : MonoBehaviour
                         LeapTarget = AimLeap(2);
                         canMove = false;
 
-                        if ((player.GetButtonDown("Attack") || (player.GetButtonDown("Special"))))
+                        if ((isDamaged || jump || player.GetButtonDown("Attack") || player.GetButtonDown("Special")))
                         {
                            
                             lineRenderer.enabled = false;
@@ -441,6 +443,15 @@ public class PlayerControl : MonoBehaviour
                         actionCooldown = -attack.recharge;
                         canMove = false;
                     }
+                    if (!grounded)
+                    {
+                        attack = fighter.techniques[7];
+                        anim.Play(attack.animationName);
+                        lastComboTime = Time.time;
+                        currentCombo++;
+                        action = true;
+                        actionCooldown = -attack.recharge;
+                    }
                 }
 
                 if (player.GetButtonDown("Attack") && localVert > 0.75f)
@@ -454,6 +465,15 @@ public class PlayerControl : MonoBehaviour
                         action = true;
                         actionCooldown = -attack.recharge;
                         canMove = false;
+                    }
+                    if (!grounded)
+                    {
+                        attack = fighter.techniques[8];
+                        anim.Play(attack.animationName);
+                        lastComboTime = Time.time;
+                        currentCombo++;
+                        action = true;
+                        actionCooldown = -attack.recharge;
                     }
                 }
                 }
@@ -612,27 +632,119 @@ public class PlayerControl : MonoBehaviour
                 {
                     Vector2 knock = new Vector2();
                     Vector2 source = new Vector2();
+                    string sourceGrav = collision.gameObject.GetComponentInParent<PlayerControl>().sTarget;
                     switch (GetComponent<GravBody>().attractor.gameObject.tag)
                     {
                         case "Floor":
-                            knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
-                            source = new Vector2(-(collision.transform.position.x - transform.position.x), 1);
+                            if (sourceGrav == "Floor")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), 1);
+                            }
+                            if (sourceGrav == "Cieling")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), -1);
+                            }
+                            if (sourceGrav == "Left")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.y * 3, collision.gameObject.GetComponent<AttackController>().knockback.x * 3);
+                                source = new Vector2(1, (collision.transform.position.x - transform.position.x));
+                            }
+                            if (sourceGrav == "Right")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.y * 3, collision.gameObject.GetComponent<AttackController>().knockback.x * 3);
+                                source = new Vector2(-1, (collision.transform.position.x - transform.position.x));
+                            }
                             break;
                         case "Cieling":
-                            knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
-                            source = new Vector2(-(collision.transform.position.x - transform.position.x), 1);
+                            if (sourceGrav == "Floor")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), -1);
+                            }
+                            if (sourceGrav == "Cieling")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), 1);
+                            }
+                            if (sourceGrav == "Left")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.y * 3, collision.gameObject.GetComponent<AttackController>().knockback.x * 3);
+                                source = new Vector2(1, (collision.transform.position.x - transform.position.x));
+                            }
+                            if (sourceGrav == "Right")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.y * 3, collision.gameObject.GetComponent<AttackController>().knockback.x * 3);
+                                source = new Vector2(-1, (collision.transform.position.x - transform.position.x));
+                            }
                             break;
                         case "Left":
-                            knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.y * 3, collision.gameObject.GetComponent<AttackController>().knockback.x * 3);
-                            source = new Vector2(1, -(collision.transform.position.y - transform.position.y));
+                            if (sourceGrav == "Floor")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
+                                source = new Vector2((collision.transform.position.x - transform.position.x), 1);
+                            }
+                            if (sourceGrav == "Cieling")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
+                                source = new Vector2((collision.transform.position.x - transform.position.x), -1);
+                            }
+                            if (sourceGrav == "Left")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.y * 3, collision.gameObject.GetComponent<AttackController>().knockback.x * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), 1);
+                            }
+                            if (sourceGrav == "Right")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.y * 3, collision.gameObject.GetComponent<AttackController>().knockback.x * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), -1);
+                            }
                             break;
                         case "Right":
-                            knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.y * 3, collision.gameObject.GetComponent<AttackController>().knockback.x * 3);
-                            source = new Vector2(1, -(collision.transform.position.y - transform.position.y));
+
+                            if (sourceGrav == "Floor")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), 1);
+                            }
+                            if (sourceGrav == "Cieling")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), -1);
+                            }
+                            if (sourceGrav == "Left")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.y * 3, collision.gameObject.GetComponent<AttackController>().knockback.x * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), -1);
+                            }
+                            if (sourceGrav == "Right")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.y * 3, collision.gameObject.GetComponent<AttackController>().knockback.x * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), 1);
+                            }
                             break;
                         default:
-                            knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
-                            source = new Vector2(-(collision.transform.position.x - transform.position.x), 1);
+                            if (sourceGrav == "Floor")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), 1);
+                            }
+                            if (sourceGrav == "Cieling")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.x * 3, collision.gameObject.GetComponent<AttackController>().knockback.y * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), -1);
+                            }
+                            if (sourceGrav == "Left")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.y * 3, collision.gameObject.GetComponent<AttackController>().knockback.x * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), 1);
+                            }
+                            if (sourceGrav == "Right")
+                            {
+                                knock = new Vector2(collision.gameObject.GetComponent<AttackController>().knockback.y * 3, collision.gameObject.GetComponent<AttackController>().knockback.x * 3);
+                                source = new Vector2(-(collision.transform.position.x - transform.position.x), 1);
+                            }
                             break;
                     }
                    
