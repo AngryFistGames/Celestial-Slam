@@ -6,27 +6,38 @@ using System;
 
 public class PlayerControl : MonoBehaviour
 {
+[Header("Components")]
     public Player player; //Rewired component
     public Fighter fighter;
-    public BasicAttack attack;
-    public float weight;
-    public float attackPower = 1;
-    public float defensePower = 1;
-    public float HP;
-    public float damage = 0;
-    public bool isBlocking = false;
-    private bool isPlayer; //if false, it is an AI player
     public Animator anim;
+    public int playerID;
+    [SerializeField] protected Rigidbody2D rigidBody;
+    public Transform GroundCheck;
+    public Transform LeapAim;
+    public float checkRadius = 0.2f;
+    public LayerMask floor;
+    public LayerMask foe;
+    public LineRenderer lineRenderer;
+    public float aimRange;
+    public GravAttractor Target;
+    public string sTarget;
+    [SerializeField] protected GravAttractor storedTarget;
+    public Vector2 LeapTarget;
+    public float aim;
+    public float aimExtend = 0.25f;
+    public GameObject Shaker;
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+
+    [Header("Controls")]
+    public BasicAttack attack;
+    public bool isBlocking = false;
+    public bool isPlayer; //if false, it is an AI player
     protected bool leaping; //is it in mid-leap?
     [SerializeField] protected bool AimingRight = true;
-    public int playerID;
     [SerializeField] protected bool faceRight = true;
     public float Horiz;
     public float Vert;
-    public float moveSpeed = 1000;
-    [SerializeField] protected float jumpHeight = 10;
-    public float speed;
-    public float leapSpeed;
     public bool canMove = true;
     public bool grounded;
     public bool action = false;
@@ -34,33 +45,31 @@ public class PlayerControl : MonoBehaviour
     public bool jump;
     public bool canInput;
     public bool isMoving;
-    [SerializeField] protected Rigidbody2D rigidBody;
-    public int maxJumpCount;
-    public int jumpCount =0;
-    public Transform GroundCheck;
-    public Transform LeapAim;
-    public float checkRadius = 0.2f;
-    public LayerMask floor;
-    public LayerMask foe;
-    public float aimSpeed;
-    public LineRenderer lineRenderer;
-    public float aimRange;
-    public GravAttractor Target;
-    public string sTarget;
-    [SerializeField] protected GravAttractor storedTarget;
-    public Vector2 LeapTarget;
+    public int jumpCount = 0;
     public float leapCooldown = 3f;
-    public float aim;
-    public float aimExtend = 0.25f;
     public bool isDamaged = false;
     protected bool cancelled = false;
     public int attackingWith;
     public int currentCombo = 0;
+    public int attackCharge = 0;
     protected float lastComboTime = 0f;
     protected float maxComboDelay = 0.9f;
     public float localHoriz;
     public float localVert;
-    public GameObject Shaker;
+
+    [Header("Stats")]
+    public float HP;
+    public float weight;
+    public float attackPower = 1;
+    public float defensePower = 1;
+    public float damage = 0;
+    public float moveSpeed = 1000;
+    [SerializeField] protected float jumpHeight = 10;
+    public float speed;
+    public float leapSpeed;
+    public int maxJumpCount;
+    public float aimSpeed;
+
 
     private void Awake()
     {
@@ -124,7 +133,7 @@ public class PlayerControl : MonoBehaviour
                     {
                         Flip();
                     }
-                    localHoriz = Math.Abs(Horiz);
+                    localHoriz = Horiz;
                     localVert = Vert;
                     break;
                 case "Cieling":
@@ -132,7 +141,7 @@ public class PlayerControl : MonoBehaviour
                     {
                         Flip();
                     }
-                    localHoriz = Math.Abs(Horiz);
+                    localHoriz = Horiz;
                     localVert = -Vert;
                     break;
                 case "Left":
@@ -140,7 +149,7 @@ public class PlayerControl : MonoBehaviour
                     {
                         Flip();
                     }
-                    localHoriz = Math.Abs(Vert);
+                    localHoriz = Vert;
                     localVert = Horiz;
                     break;
                 case "Right":
@@ -148,7 +157,7 @@ public class PlayerControl : MonoBehaviour
                     {
                         Flip();
                     }
-                    localHoriz = Math.Abs(Vert);
+                    localHoriz = Vert;
                     localVert = -Horiz;
                     break;
                 default:
@@ -303,7 +312,7 @@ public class PlayerControl : MonoBehaviour
                     break;
             }
 
-        if (grounded == true)
+        if (grounded)
         {
             leaping = false;
             if (actionCooldown > 0.5f)
@@ -314,8 +323,72 @@ public class PlayerControl : MonoBehaviour
                     rigidBody.AddForce(mover);
                 }
 
+            }
+        }
+        if (!grounded)
+        {
+            if (actionCooldown > 0.5f)
+            {
+                canInput = true;
+                if ((canMove) && (!action))
+                {
+                    rigidBody.AddForce(mover * 0.75f);
+                }
 
+            }
+            switch (GetComponent<GravBody>().attractor.gameObject.tag)
+            {
+                case "Floor":
+                    if (rigidBody.velocity.y < 0)
+                    {
+                        rigidBody.velocity += Vector2.up * GetComponent<GravBody>().gravity * (fallMultiplier - 1) * Time.deltaTime;
+                    }
+                    else
+                    if (rigidBody.velocity.y > 0 && !player.GetButton("Jump"))
+                    {
+                        rigidBody.velocity += Vector2.up * GetComponent<GravBody>().gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
+                    }
+                    break;
+                case "Cieling":
+                    if (rigidBody.velocity.y > 0)
+                    {
+                        rigidBody.velocity += Vector2.down * GetComponent<GravBody>().gravity * (fallMultiplier - 1) * Time.deltaTime;
+                    }
+                    else
+                    if (rigidBody.velocity.y < 0 && !player.GetButton("Jump"))
+                    {
+                        rigidBody.velocity += Vector2.down * GetComponent<GravBody>().gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
+                    }
+                    break;
+                case "Left":
+                    if (rigidBody.velocity.x > 0)
+                    {
+                        rigidBody.velocity += Vector2.right * GetComponent<GravBody>().gravity * (fallMultiplier - 1) * Time.deltaTime;
+                    }
 
+                    else
+                    if (rigidBody.velocity.x < 0 && !player.GetButton("Jump"))
+                    {
+                        rigidBody.velocity += Vector2.right * GetComponent<GravBody>().gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
+                    }
+                    break;
+                case "Right":
+                    if (rigidBody.velocity.x < 0)
+                    {
+                        rigidBody.velocity += Vector2.left * GetComponent<GravBody>().gravity * (fallMultiplier - 1) * Time.deltaTime;
+                    }
+                    else
+                    if (rigidBody.velocity.y < 0 && !player.GetButton("Jump"))
+                    {
+                        rigidBody.velocity += Vector2.left * GetComponent<GravBody>().gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
+                    }
+                    break;
+                default:
+
+                    break;
+            } 
+        }
+            
                 if ((!cancelled) && leapCooldown >= 3f)
                 {
                     if (player.GetButton("Leap"))
@@ -324,7 +397,7 @@ public class PlayerControl : MonoBehaviour
                         action = true;
                         LeapTarget = AimLeap(1);
                         canMove = false;
-                        if (jump || isDamaged || player.GetButtonDown("Attack") || (player.GetButtonDown("Special")))
+                        if (isDamaged || player.GetButtonDown("Attack") || (player.GetButtonDown("Special")))
                         {
                             cancelled = true;
                             storedTarget = Target;
@@ -332,7 +405,7 @@ public class PlayerControl : MonoBehaviour
                             canMove = true;
                             action = false;
                         }
-                        if ((jump || isDamaged || player.GetButtonDown("Attack") || player.GetButtonDown("Special")))
+                        if ((isDamaged || player.GetButtonDown("Attack") || player.GetButtonDown("Special")))
                         {
                             lineRenderer.enabled = false;
                             storedTarget = Target;
@@ -348,7 +421,7 @@ public class PlayerControl : MonoBehaviour
                         LeapTarget = AimLeap(2);
                         canMove = false;
 
-                        if ((isDamaged || jump || player.GetButtonDown("Attack") || player.GetButtonDown("Special")))
+                        if ((isDamaged ||player.GetButtonDown("Attack") || player.GetButtonDown("Special")))
                         {
                            
                             lineRenderer.enabled = false;
@@ -371,13 +444,13 @@ public class PlayerControl : MonoBehaviour
                     canMove = true;
                     action = false;
                 }
-            }
-        }
-            if (canMove) //if the fighter is able to move
+
+
+        if (canMove) //if the fighter is able to move
+        {
+            if (actionCooldown >= 0)
             {
-                if (actionCooldown >= 0)
-                {
-                if (player.GetButtonDown("Attack") && localHoriz <= 0.5 && localVert == 0)
+                if (player.GetButtonDown("Attack") && (localHoriz <= 0.5 && localHoriz >= -0.5) && localVert == 0)
                 {
                     if (grounded)
                     {
@@ -408,7 +481,7 @@ public class PlayerControl : MonoBehaviour
                         canMove = false;
                     }
                 }
-                if (player.GetButtonDown("Attack") && localHoriz > 0.5f)
+                if (player.GetButtonDown("Attack") && localHoriz > 0.5)
                 {
                     if (grounded)
                     {
@@ -422,15 +495,60 @@ public class PlayerControl : MonoBehaviour
                     }
                     if (!grounded)
                     {
-                        attack = fighter.techniques[6];
+                        if (faceRight)
+                        {
+                            attack = fighter.techniques[6];
+                            anim.Play(attack.animationName);
+                            lastComboTime = Time.time;
+                            currentCombo++;
+                            action = true;
+                            actionCooldown = -attack.recharge;
+                        }
+                        if (!faceRight)
+                        {
+                            attack = fighter.techniques[9];
+                            anim.Play(attack.animationName);
+                            lastComboTime = Time.time;
+                            currentCombo++;
+                            action = true;
+                            actionCooldown = -attack.recharge;
+                        }
+                    }
+                }
+                if (player.GetButtonDown("Attack") && localHoriz < -0.5)
+                {
+                    if (grounded)
+                    {
+                        attack = fighter.techniques[2];
                         anim.Play(attack.animationName);
                         lastComboTime = Time.time;
                         currentCombo++;
                         action = true;
                         actionCooldown = -attack.recharge;
+                        canMove = false;
+                    }
+                    if (!grounded)
+                    {
+                        if (!faceRight)
+                        {
+                            attack = fighter.techniques[6];
+                            anim.Play(attack.animationName);
+                            lastComboTime = Time.time;
+                            currentCombo++;
+                            action = true;
+                            actionCooldown = -attack.recharge;
+                        }
+                        if (faceRight)
+                        {
+                            attack = fighter.techniques[9];
+                            anim.Play(attack.animationName);
+                            lastComboTime = Time.time;
+                            currentCombo++;
+                            action = true;
+                            actionCooldown = -attack.recharge;
+                        }
                     }
                 }
-
                 if (player.GetButtonDown("Attack") && localVert < -0.75f)
                 {
                     if (grounded)
@@ -476,14 +594,18 @@ public class PlayerControl : MonoBehaviour
                         actionCooldown = -attack.recharge;
                     }
                 }
+
+
+                if (player.GetButtonDown("Special"))
+                {
                 }
-                    
-                    if (player.GetButtonDown("Special"))
-                    {
-                    }
+
+                if (player.GetButton("Attack") && player.GetButton("Special"))
+                {
+
                 }
-            
-     
+            }
+        }
 
     }
     void ProccessInput()
@@ -495,33 +617,40 @@ public class PlayerControl : MonoBehaviour
     }
     void Flip()
     {
-        faceRight = !faceRight;
-        transform.Rotate(0, 180f, 0);
+        if (grounded)
+        {
+            faceRight = !faceRight;
+            transform.Rotate(0, 180f, 0);
+        }
     }
     void Jump()
     {
         jumpCount += 1;
         switch (GetComponent<GravBody>().attractor.gameObject.tag) {
             case "Floor":
-        rigidBody.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpHeight);
                 break;
             case "Cieling":
-                rigidBody.AddForce(new Vector2(0, -jumpHeight), ForceMode2D.Impulse);
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x, -jumpHeight);
                 break;
             case "Left":
-                rigidBody.AddForce(new Vector2(jumpHeight, 0), ForceMode2D.Impulse);
+                rigidBody.velocity = new Vector2(jumpHeight, rigidBody.velocity.y);
                 break;
             case "Right":
-                rigidBody.AddForce(new Vector2(-jumpHeight, 0), ForceMode2D.Impulse);
+                rigidBody.velocity = new Vector2(-jumpHeight, rigidBody.velocity.y);
                 break;
             default:
-                rigidBody.AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpHeight);
                 break;
         }
     }
 
     Vector2 AimLeap(int pos)
     {
+        if (LeapAim.localPosition.y != 0.25f)
+        {
+            LeapAim.localPosition = new Vector3(0, 0.25f, 0);
+        }
         if (!cancelled)
         {
             canMove = false;
@@ -763,5 +892,11 @@ public class PlayerControl : MonoBehaviour
         attack = null;
         canMove = true;
         action = false;
+        attackCharge = 0;
+    }
+
+    public void ChargeProjectile()
+    {
+        attackCharge++;
     }
 }

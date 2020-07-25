@@ -323,6 +323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attractor: {fileID: 0}
   rb: {fileID: 0}
+  gravity: -10
 --- !u!95 &953209296794254530
 Animator:
   serializedVersion: 3
@@ -371,33 +372,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fighter: {fileID: 11400000, guid: 797d86d87b211d049acd6d1c6bbcc521, type: 2}
-  attack: {fileID: 0}
-  weight: 0
-  attackPower: 1
-  defensePower: 1
-  HP: 0
-  damage: 0
-  isBlocking: 0
-  anim: {fileID: 0}
-  AimingRight: 1
+  anim: {fileID: 953209296794254530}
   playerID: 1
-  faceRight: 1
-  Horiz: 0
-  Vert: 0
-  moveSpeed: 25
-  jumpHeight: 10
-  speed: 0
-  leapSpeed: 0
-  canMove: 1
-  grounded: 0
-  action: 0
-  actionCooldown: -0.5
-  jump: 0
-  canInput: 0
-  isMoving: 0
   rigidBody: {fileID: 953209296794254541}
-  maxJumpCount: 0
-  jumpCount: 0
   GroundCheck: {fileID: 953209297178382675}
   LeapAim: {fileID: 953209297230246774}
   checkRadius: 0.2
@@ -407,21 +384,50 @@ MonoBehaviour:
   foe:
     serializedVersion: 2
     m_Bits: 15872
-  aimSpeed: 70
   lineRenderer: {fileID: 953209296996354344}
   aimRange: 80
   Target: {fileID: 0}
+  sTarget: 
   storedTarget: {fileID: 0}
   LeapTarget: {x: 0, y: 0}
-  leapCooldown: 3
   aim: 0
   aimExtend: 0.25
+  Shaker: {fileID: 0}
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  attack: {fileID: 0}
+  isBlocking: 0
+  isPlayer: 0
+  AimingRight: 1
+  faceRight: 1
+  Horiz: 0
+  Vert: 0
+  canMove: 1
+  grounded: 0
+  action: 0
+  actionCooldown: -0.5
+  jump: 0
+  canInput: 0
+  isMoving: 0
+  jumpCount: 0
+  leapCooldown: 3
   isDamaged: 0
   attackingWith: 0
   currentCombo: 0
+  attackCharge: 0
   localHoriz: 0
   localVert: 0
-  Shaker: {fileID: 0}
+  HP: 0
+  weight: 0
+  attackPower: 1
+  defensePower: 1
+  damage: 0
+  moveSpeed: 25
+  jumpHeight: 10
+  speed: 0
+  leapSpeed: 0
+  maxJumpCount: 0
+  aimSpeed: 70
 --- !u!1 &953209296813171068
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,7 +824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953209297013585602}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02979332, y: -0.33837155, z: 0}
+  m_LocalPosition: {x: 0.02979332, y: -0.3383715, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 953209297237466495}
@@ -1491,7 +1497,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.84, y: 1.05}
+  m_Size: {x: 1.62, y: 1.05}
   m_EdgeRadius: 0
 --- !u!114 &953209297719535199
 MonoBehaviour:

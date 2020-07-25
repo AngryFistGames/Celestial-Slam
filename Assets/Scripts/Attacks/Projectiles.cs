@@ -9,6 +9,7 @@ public class Projectiles : ScriptableObject
     public float damagePower;
     public float priorityPower;
     public Vector2 knockback;
+    public float charge;
     public bool doesRikochet;
     public Vector2 rikochetAngle;
 }

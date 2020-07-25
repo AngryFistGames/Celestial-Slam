@@ -16,7 +16,7 @@ MonoBehaviour:
   animationName: CancerNeutralAAttack 1
   damagePower: 3
   priorityPower: 2
-  knockback: {x: 2, y: 2}
+  knockback: {x: 9, y: 6}
   chargable: 0
   recharge: 0.5
   projectile: {fileID: 0}

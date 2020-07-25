@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GravAttractor : MonoBehaviour
 {
-    public float gravity = -10;
     Vector3 rot;
     public void Attract(Transform body)
     {
@@ -34,7 +33,7 @@ public class GravAttractor : MonoBehaviour
                 break;
         }
         Quaternion targetRotation = Quaternion.FromToRotation(bodyUp, rot) * body.rotation;
-        body.GetComponent<Rigidbody2D>().AddForce(GravityUp * gravity); //general gravity
+        body.GetComponent<Rigidbody2D>().AddForce(GravityUp * body.GetComponent<GravBody>().gravity); //general gravity
         body.rotation = Quaternion.Lerp(body.rotation, targetRotation, 50 * Time.fixedDeltaTime); //rotate to gravity
     }
 

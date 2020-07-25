@@ -6,10 +6,13 @@ public class Projectile : MonoBehaviour
 {
     public Projectiles ammo;
     public Vector2 direction;
+    public bool rikochet;
+    public Vector2 bounceAngle;
     float timer = 0f;
     public float shotRange; //how long the projectile is active in the scene
     [SerializeField]
     string characterName;
+    public float directionSpeed;
 
     [SerializeField]
     BoxCollider2D bc;
@@ -19,12 +22,17 @@ public class Projectile : MonoBehaviour
     {
         StartCoroutine(EnableCollider());
         direction = ammo.trajectory;
+        rikochet = ammo.doesRikochet;
+        if (rikochet)
+        {
+            bounceAngle = ammo.rikochetAngle;
+        }
     }
     void Update()
     {
         if (direction == Vector2.right) //if the projectile goes right
         {
-
+            
         }
         if (direction == Vector2.left) //if the projectile goes left
         {
@@ -51,5 +59,10 @@ public class Projectile : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
             bc.enabled = true; //enable the collider
+    }
+
+    void RangeOut()
+    {
+        Destroy(this.gameObject);
     }
 }

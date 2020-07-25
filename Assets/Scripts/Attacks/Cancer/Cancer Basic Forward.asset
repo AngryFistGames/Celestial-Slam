@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Double Pincer
   animationName: CancerForwardAAttack
-  damagePower: 9
+  damagePower: 12
   priorityPower: 4
-  knockback: {x: 3, y: 6}
+  knockback: {x: 14, y: 14}
   chargable: 0
-  recharge: 0.3
+  recharge: 0.5
   projectile: {fileID: 0}
