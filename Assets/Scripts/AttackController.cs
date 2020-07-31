@@ -12,17 +12,20 @@ public class AttackController : MonoBehaviour
     public bool SweetSpot; //is this hitbox a sweetspot
     public bool isProjectile;
     public Vector2 knockback;
+    public int charge = 1;
 
     public void OnEnable()
     {
-
-        technique = GetComponentInParent<PlayerControl>().attack;
-        if (technique != null)
+        if (!gameObject.GetComponent<Projectile>())
         {
-            isAttacking = true;
-            priorityPower = technique.priorityPower * GetComponentInParent<PlayerControl>().attackPower;
-            damagePower = technique.damagePower * GetComponentInParent<PlayerControl>().attackPower;
-            knockback = technique.knockback;
+            technique = GetComponentInParent<PlayerControl>().attack;
+            if (technique != null)
+            {
+                isAttacking = true;
+                priorityPower = technique.priorityPower * GetComponentInParent<PlayerControl>().attackPower;
+                damagePower = technique.damagePower * GetComponentInParent<PlayerControl>().attackPower * charge;
+                knockback = technique.knockback;
+            }
         }
         if (gameObject.GetComponent<Projectile>())
         {
@@ -32,7 +35,7 @@ public class AttackController : MonoBehaviour
             {
                 isAttacking = true;
                 priorityPower = ammo.priorityPower;
-                damagePower = ammo.damagePower;
+                damagePower = ammo.damagePower * charge;
                 knockback = ammo.knockback;
             }
         }
@@ -47,8 +50,9 @@ public class AttackController : MonoBehaviour
             priorityPower = 0;
             damagePower = 0;
             knockback = Vector2.zero;
+            charge = 1;
         }
-        if (technique != null)
+        if (ammo != null)
         {
             Destroy(this);
        

@@ -5,21 +5,30 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public Projectiles ammo;
+    public Animator anim;
     public Vector2 direction;
+    public Vector2 _direction;
     public bool rikochet;
     public Vector2 bounceAngle;
     float timer = 0f;
     public float shotRange; //how long the projectile is active in the scene
     [SerializeField]
     string characterName;
-    public float directionSpeed;
-
+    public Vector2 launchingPoint;
+    public Rigidbody2D rb;
     [SerializeField]
     BoxCollider2D bc;
+    public bool rightFace;
+    string floor;
+    public float directionSpeed;
 
-
+    private void Start()
+    {
+        launchingPoint = ammo.launchPoint;
+    }
     void OnEnable()
     {
+        rightFace = GetComponentInParent<PlayerTracker>().faceRight;
         StartCoroutine(EnableCollider());
         direction = ammo.trajectory;
         rikochet = ammo.doesRikochet;
@@ -27,42 +36,98 @@ public class Projectile : MonoBehaviour
         {
             bounceAngle = ammo.rikochetAngle;
         }
+        floor = transform.GetComponentInParent<PlayerTracker>().targetTag.gameObject.tag;
     }
     void Update()
     {
-        if (direction == Vector2.right) //if the projectile goes right
+        if (rightFace)
         {
-            
+            switch (floor)
+            {
+                case "Floor":
+                    _direction = new Vector2(direction.x * Time.deltaTime, direction.y * Time.deltaTime);
+                    break;
+                case "Cieling":
+                    rb.velocity = new Vector2(-direction.x * Time.deltaTime, -direction.y * Time.deltaTime);
+                    break;
+                case "Left":
+                    _direction = new Vector2(-direction.y * Time.deltaTime, -direction.x * Time.deltaTime);
+                    break;
+                case "Right":
+                    _direction = new Vector2(direction.y * Time.deltaTime, direction.x * Time.deltaTime);
+                    break;
+                default:
+                    _direction = direction * Time.deltaTime;
+                    break;
+            }
         }
-        if (direction == Vector2.left) //if the projectile goes left
-        {
-
-        }
-        if (direction == Vector2.up) //if the projectile goes up
-        {
-
-        }
-        if (direction == Vector2.down) //if the projectile goes down
-        {
-
-        }
-
+            if (!rightFace)
+            {
+                switch (floor)
+                {
+                    case "Floor":
+                        _direction = new Vector2(-direction.x * Time.deltaTime, direction.y * Time.deltaTime);
+                        break;
+                    case "Cieling":
+                        _direction = new Vector2(direction.x * Time.deltaTime, -direction.y * Time.deltaTime);
+                        break;
+                    case "Left":
+                    _direction = new Vector2(direction.y * Time.deltaTime, direction.x * Time.deltaTime);
+                        break;
+                    case "Right":
+                    _direction = new Vector2(-direction.y * Time.deltaTime, -direction.x * Time.deltaTime);
+                        break;
+                    default:
+                    _direction = Vector2.up  * Time.deltaTime;
+                        break;
+                }
+            }
+        rb.velocity = _direction;
         timer += Time.deltaTime;
         if (timer >= shotRange)
         {
-            Destroy(this.gameObject);
+            if (anim != null)
+            {
+                anim.SetTrigger("done");
+            }
+            else
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
 
-    IEnumerator EnableCollider()
-    {
-        yield return new WaitForSeconds(0.2f);
-            bc.enabled = true; //enable the collider
-    }
+            public void OnCollisionEnter2D(Collision2D collision)
+            {
+                if ((collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Cieling" || collision.gameObject.tag == "Left" || collision.gameObject.tag == "Right") && (!collision.gameObject.CompareTag(floor)) )
+                {
+                    if (rikochet)
+                    {
+                floor = collision.gameObject.tag;
+                //Vector2 wallContact = collision.contacts[0].normal;
+                //direction = Vector2.Reflect(bounceAngle, wallContact).normalized * Time.deltaTime;
+                //_direction = direction * directionSpeed;
+                    }
+                    if (!rikochet)
+                    {
+                        anim.SetTrigger("done");
+                    }
+                }
+                if (collision.gameObject.tag == "Player" && (collision.gameObject.GetComponent<PlayerControl>().GetInstanceID() != GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).GetInstanceID()))
+                {
+                    anim.SetTrigger("done");
+                }
+            }
+            IEnumerator EnableCollider()
+            {
+                yield return new WaitForSeconds(0.3f);
+                bc.enabled = true; //enable the collider
+            }
 
-    void RangeOut()
-    {
-        Destroy(this.gameObject);
+            void RangeOut()
+            {
+                Destroy(this.gameObject);
+            }
+        
     }
-}

@@ -393,8 +393,8 @@ MonoBehaviour:
   aim: 0
   aimExtend: 0.25
   Shaker: {fileID: 0}
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
+  fallMultiplier: 6
+  lowJumpMultiplier: 5.8
   attack: {fileID: 0}
   isBlocking: 0
   isPlayer: 0
@@ -407,6 +407,7 @@ MonoBehaviour:
   action: 0
   actionCooldown: -0.5
   jump: 0
+  jumpDelay: 0.25
   canInput: 0
   isMoving: 0
   jumpCount: 0
@@ -426,7 +427,7 @@ MonoBehaviour:
   jumpHeight: 10
   speed: 0
   leapSpeed: 0
-  maxJumpCount: 0
+  maxJumpCount: 1
   aimSpeed: 70
 --- !u!1 &953209296813171068
 GameObject:

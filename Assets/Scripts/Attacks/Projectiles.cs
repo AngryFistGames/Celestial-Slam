@@ -12,4 +12,5 @@ public class Projectiles : ScriptableObject
     public float charge;
     public bool doesRikochet;
     public Vector2 rikochetAngle;
+    public Vector2 launchPoint;
 }

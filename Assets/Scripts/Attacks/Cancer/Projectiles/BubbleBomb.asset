@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48b118c026213d341bd3862207ff8ea7, type: 3}
-  m_Name: Cancer Basic Neutral
+  m_Script: {fileID: 11500000, guid: 939ff8631510f5c4e87223cd420c67db, type: 3}
+  m_Name: BubbleBomb
   m_EditorClassIdentifier: 
-  attackName: Ground Slash
-  animationName: CancerNeutralAAttack
-  damagePower: 5
-  priorityPower: 2
-  knockback: {x: 10, y: 10}
-  chargable: 0
-  recharge: 0.5
-  projectile: {fileID: 0}
+  trajectory: {x: 100, y: 0}
+  damagePower: 20
+  priorityPower: 5
+  knockback: {x: 15, y: 20}
+  charge: 0
+  doesRikochet: 1
+  rikochetAngle: {x: 0, y: -90}
+  launchPoint: {x: 1.45, y: 0}

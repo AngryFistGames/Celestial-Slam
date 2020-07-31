@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fighterName: Cancer
   HitPoints: 1000
-  jumpHeight: 18
+  jumpHeight: 12
   speed: 25
   weight: 3
   BaseAttack: 1
@@ -30,3 +30,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 278b20d017d92ef43b0a0592740716f3, type: 2}
   - {fileID: 11400000, guid: 32c140fdcda12e541a9c57a4f309d9f7, type: 2}
   - {fileID: 11400000, guid: 2ad6ee5bec7c7f04a9193d20f7eff18f, type: 2}
+  - {fileID: 11400000, guid: 758fdf3072ca3d14484eaa230815f0f7, type: 2}
