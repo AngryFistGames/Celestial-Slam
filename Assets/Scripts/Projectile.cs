@@ -28,6 +28,7 @@ public class Projectile : MonoBehaviour
     }
     void OnEnable()
     {
+        bc = GetComponent<BoxCollider2D>();
         rightFace = GetComponentInParent<PlayerTracker>().faceRight;
         StartCoroutine(EnableCollider());
         direction = ammo.trajectory;
@@ -45,16 +46,16 @@ public class Projectile : MonoBehaviour
             switch (floor)
             {
                 case "Floor":
-                    _direction = new Vector2(direction.x * Time.deltaTime, direction.y * Time.deltaTime);
+                    _direction = new Vector2(direction.x * Time.deltaTime * directionSpeed, direction.y * Time.deltaTime * directionSpeed);
                     break;
                 case "Cieling":
-                    rb.velocity = new Vector2(-direction.x * Time.deltaTime, -direction.y * Time.deltaTime);
+                    _direction = new Vector2(-direction.x * Time.deltaTime * directionSpeed, -direction.y * Time.deltaTime * directionSpeed);
                     break;
                 case "Left":
-                    _direction = new Vector2(-direction.y * Time.deltaTime, -direction.x * Time.deltaTime);
+                    _direction = new Vector2(-direction.y * Time.deltaTime * directionSpeed, -direction.x * Time.deltaTime * directionSpeed);
                     break;
                 case "Right":
-                    _direction = new Vector2(direction.y * Time.deltaTime, direction.x * Time.deltaTime);
+                    _direction = new Vector2(direction.y * Time.deltaTime * directionSpeed, direction.x * Time.deltaTime * directionSpeed);
                     break;
                 default:
                     _direction = direction * Time.deltaTime;
@@ -114,14 +115,14 @@ public class Projectile : MonoBehaviour
                         anim.SetTrigger("done");
                     }
                 }
-                if (collision.gameObject.tag == "Player" && (collision.gameObject.GetComponent<PlayerControl>().GetInstanceID() != GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).GetInstanceID()))
+                if (collision.gameObject.tag == "Player" && !collision.gameObject.GetComponent<PlayerControl>().dodging && (collision.gameObject.GetComponent<PlayerControl>().GetInstanceID() != GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).GetInstanceID()))
                 {
                     anim.SetTrigger("done");
                 }
             }
             IEnumerator EnableCollider()
             {
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.4f);
                 bc.enabled = true; //enable the collider
             }
 

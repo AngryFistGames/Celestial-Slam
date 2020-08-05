@@ -2400,6 +2400,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1048300047}
     m_Modifications:
+    - target: {fileID: 860908995341431745, guid: 1f7d59fbd2e2ec246beb78fc68bec01a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 953209296720475643, guid: 1f7d59fbd2e2ec246beb78fc68bec01a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2885,9 +2890,34 @@ PrefabInstance:
       propertyPath: fallMultiplier
       value: 6.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1731990583980303853, guid: 1f7d59fbd2e2ec246beb78fc68bec01a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267932418951259475, guid: 1f7d59fbd2e2ec246beb78fc68bec01a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4110764603199983470, guid: 1f7d59fbd2e2ec246beb78fc68bec01a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6740622272398443518, guid: 1f7d59fbd2e2ec246beb78fc68bec01a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7725931646673768000, guid: 1f7d59fbd2e2ec246beb78fc68bec01a,
         type: 3}
       propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7961514951413447558, guid: 1f7d59fbd2e2ec246beb78fc68bec01a,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -10,6 +10,7 @@ public class BasicAttack : ScriptableObject
     public float damagePower;
     public float priorityPower;
     public Vector2 knockback;
+    public float GuardBreaking;
     public bool chargable;
     public float recharge = 0.5f;
     public GameObject projectile;

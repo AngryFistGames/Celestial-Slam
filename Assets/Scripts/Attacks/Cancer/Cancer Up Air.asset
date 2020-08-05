@@ -17,6 +17,7 @@ MonoBehaviour:
   damagePower: 18
   priorityPower: 4
   knockback: {x: 14, y: 3}
+  GuardBreaking: 4
   chargable: 0
   recharge: 0.7
   projectile: {fileID: 0}
