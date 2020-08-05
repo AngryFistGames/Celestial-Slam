@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
     string floor;
     public float directionSpeed;
 
-    private void Start()
+    private void Awake()
     {
         launchingPoint = ammo.launchPoint;
     }
@@ -67,16 +67,16 @@ public class Projectile : MonoBehaviour
                 switch (floor)
                 {
                     case "Floor":
-                        _direction = new Vector2(-direction.x * Time.deltaTime, direction.y * Time.deltaTime);
+                        _direction = new Vector2(-direction.x * Time.deltaTime * directionSpeed, direction.y * Time.deltaTime * directionSpeed);
                         break;
                     case "Cieling":
-                        _direction = new Vector2(direction.x * Time.deltaTime, -direction.y * Time.deltaTime);
+                        _direction = new Vector2(direction.x * Time.deltaTime * directionSpeed, -direction.y * Time.deltaTime * directionSpeed);
                         break;
                     case "Left":
-                    _direction = new Vector2(direction.y * Time.deltaTime, direction.x * Time.deltaTime);
+                    _direction = new Vector2(direction.y * Time.deltaTime * directionSpeed, direction.x * Time.deltaTime * directionSpeed);
                         break;
                     case "Right":
-                    _direction = new Vector2(-direction.y * Time.deltaTime, -direction.x * Time.deltaTime);
+                    _direction = new Vector2(-direction.y * Time.deltaTime * directionSpeed, -direction.x * Time.deltaTime * directionSpeed);
                         break;
                     default:
                     _direction = Vector2.up  * Time.deltaTime;

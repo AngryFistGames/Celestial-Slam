@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchSize: 0
+  anim: {fileID: 0}
 --- !u!114 &-8611750040240296929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +207,7 @@ MonoBehaviour:
   rb: {fileID: 2122743717271069775}
   bc: {fileID: -2919320533818672999}
   rightFace: 0
-  directionSpeed: 100
+  directionSpeed: 50
 --- !u!114 &1179780196978769405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,4 +290,5 @@ MonoBehaviour:
   SweetSpot: 0
   isProjectile: 1
   knockback: {x: 12, y: 12}
+  GuardBreaking: 0
   charge: 1

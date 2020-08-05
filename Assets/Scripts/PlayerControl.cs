@@ -215,6 +215,7 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("grounded", grounded);
         anim.SetBool("leap", lineRenderer.enabled);
         anim.SetFloat("speed", speed);
+        anim.SetInteger("charge", attackCharge);
         if (grounded)
         {
             anim.SetBool("Guard", isBlocking);
@@ -526,9 +527,11 @@ public class PlayerControl : MonoBehaviour
                 }
 
 
-        if (canMove) //if the fighter is able to move
+
+        if (!isBlocking && !dodging)
         {
-            if (!isBlocking && !dodging) {
+            if (canMove) //if the fighter is able to move
+            {
                 if (actionCooldown >= 0)
                 {
                     if (player.GetButtonDown("Attack") && (localHoriz <= 0.5 && localHoriz >= -0.5) && localVert == 0)
@@ -677,7 +680,7 @@ public class PlayerControl : MonoBehaviour
                     }
 
 
-                    if (player.GetButton("Special"))
+                    if (player.GetButtonDown("Special") && (localHoriz < 0.75 && localHoriz > -0.75) && (localVert < 0.75 && localVert > -0.75))
                     {
                         if (grounded)
                         {
@@ -690,6 +693,8 @@ public class PlayerControl : MonoBehaviour
                             {
                                 storedProjectile = attack.projectile;
                             }
+                            else return;
+
                             if (!attack.chargable)
                             {
                                 if (storedProjectile != null)
@@ -749,8 +754,12 @@ public class PlayerControl : MonoBehaviour
                                     }
                                     storedProjectile = null;
                                 }
-                                currentCombo++;
-                                actionCooldown = -attack.recharge;
+                                else
+                                {
+                                    currentCombo++;
+                                    actionCooldown = -attack.recharge;
+                                }
+
                             }
                             else
                             {
@@ -760,11 +769,13 @@ public class PlayerControl : MonoBehaviour
                                 }
 
                             }
+                            currentCombo++;
+                            actionCooldown = -attack.recharge;
                         }
 
                         if (!grounded)
                         {
-                            attack = fighter.techniques[10];
+                            attack = fighter.techniques[11];
                             anim.Play(attack.animationName);
                             action = true;
                             lastComboTime = Time.time;
@@ -773,6 +784,8 @@ public class PlayerControl : MonoBehaviour
                             {
                                 storedProjectile = attack.projectile;
                             }
+                            else return;
+
                             if (!attack.chargable)
                             {
                                 if (storedProjectile != null)
@@ -815,8 +828,12 @@ public class PlayerControl : MonoBehaviour
                                         }
                                     }
                                 }
-                                currentCombo++;
-                                actionCooldown = -attack.recharge;
+                                else
+                                {
+                                    currentCombo++;
+                                    actionCooldown = -attack.recharge;
+                                }
+
                             }
                             else
                             {
@@ -827,61 +844,227 @@ public class PlayerControl : MonoBehaviour
 
 
                             }
+
                         }
                     }
-                    if (player.GetButtonUp("Special"))
+                    if (player.GetButtonDown("Special") && (localHoriz >= 0.75 || localHoriz <= -0.75))
                     {
-                        anim.SetTrigger("unleashed");
-                        if ((storedProjectile != null) && attackCharge >= 1 && attack.projectile != null)
+                        if (grounded)
                         {
-                            if (faceRight)
+                            attack = fighter.techniques[12];
+                            anim.Play(attack.animationName);
+                            action = true;
+                            lastComboTime = Time.time;
+                            canMove = false;
+                            if (attack.projectile != null)
                             {
-                                switch (Target.gameObject.tag)
+                                storedProjectile = attack.projectile;
+                            }
+                            else return;
+                            if (!attack.chargable)
+                            {
+                                if (storedProjectile != null)
                                 {
-                                    case "Floor":
-                                        Instantiate<GameObject>(attack.projectile, new Vector2(transform.position.x + attack.projectile.GetComponent<Projectile>().launchingPoint.x, transform.position.y + attack.projectile.GetComponent<Projectile>().launchingPoint.y), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                        break;
-                                    case "Cieling":
-                                        Instantiate<GameObject>(attack.projectile, new Vector2(transform.position.x - attack.projectile.GetComponent<Projectile>().launchingPoint.x, transform.position.y - attack.projectile.GetComponent<Projectile>().launchingPoint.y), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                        break;
-                                    case "Right":
-                                        Instantiate<GameObject>(attack.projectile, new Vector2(transform.position.x + attack.projectile.GetComponent<Projectile>().launchingPoint.y, transform.position.y + attack.projectile.GetComponent<Projectile>().launchingPoint.x), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                        break;
-                                    case "Left":
-                                        Instantiate<GameObject>(attack.projectile, new Vector2(transform.position.x - attack.projectile.GetComponent<Projectile>().launchingPoint.y, transform.position.y - attack.projectile.GetComponent<Projectile>().launchingPoint.x), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                        break;
+                                    switch (Target.gameObject.tag)
+                                    {
+                                        case "Floor":
+                                            {
+                                                if (faceRight)
+                                                {
+                                                    Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.x, transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.y), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                }
+                                                if (!faceRight)
+                                                {
+                                                    Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.x, transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.y), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                }
+
+                                            }
+                                            break;
+                                        case "Cieling":
+                                            {
+                                                if (faceRight)
+                                                {
+                                                    Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.x, transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.y), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                }
+                                                if (!faceRight)
+                                                {
+                                                    Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.x, transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.y), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                }
+
+                                            }
+                                            break;
+                                        case "Right":
+                                            {
+                                                if (faceRight)
+                                                {
+                                                    Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.y, transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.x), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                }
+                                                if (!faceRight)
+                                                {
+                                                    Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.y, transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.x), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                }
+                                            }
+                                            break;
+                                        case "Left":
+                                            {
+                                                if (faceRight)
+                                                {
+                                                    Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.y, transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.x), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                }
+                                                if (!faceRight)
+                                                {
+                                                    Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.y, transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.x), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                }
+                                            }
+                                            break;
+                                    }
+                                    storedProjectile = null;
+                                }
+                                else
+                                {
+                                    currentCombo++;
+                                    actionCooldown = -attack.recharge;
+                                }
+
+                            }
+                            else
+                            {
+                                if (isDamaged)
+                                {
+                                    unAttack();
+                                }
+
+                            }
+                        }
+
+                        if (!grounded)
+                        {
+                            attack = fighter.techniques[13];
+                            anim.Play(attack.animationName);
+                            action = true;
+                            lastComboTime = Time.time;
+                            canMove = false;
+                            if (attack.projectile != null)
+                            {
+                                storedProjectile = attack.projectile;
+                            }
+                            else return;
+
+                            if (!attack.chargable)
+                            {
+                                if (storedProjectile != null)
+                                {
+
+                                    if (faceRight)
+                                    {
+                                        switch (Target.gameObject.tag)
+                                        {
+                                            case "Floor":
+                                                Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.x, transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.y), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                break;
+                                            case "Cieling":
+                                                Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.x, transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.y), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                break;
+                                            case "Right":
+                                                Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.y, transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.x), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                break;
+                                            case "Left":
+                                                Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.y, transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.x), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                break;
+                                        }
+                                    }
+                                    if (!faceRight)
+                                    {
+                                        switch (Target.gameObject.tag)
+                                        {
+                                            case "Floor":
+                                                Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.x, transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.y), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                break;
+                                            case "Cieling":
+                                                Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.x, transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.y), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                break;
+                                            case "Right":
+                                                Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.y, transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.x), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                break;
+                                            case "Left":
+                                                Instantiate<GameObject>(storedProjectile, new Vector2(transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.y, transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.x), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                                break;
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    currentCombo++;
+                                    actionCooldown = -attack.recharge;
                                 }
                             }
-                            if (!faceRight)
+                            else
                             {
-                                switch (Target.gameObject.tag)
+                                if (isDamaged)
                                 {
-                                    case "Floor":
-                                        Instantiate<GameObject>(attack.projectile, new Vector2(transform.position.x - attack.projectile.GetComponent<Projectile>().launchingPoint.x, transform.position.y + attack.projectile.GetComponent<Projectile>().launchingPoint.y), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                        break;
-                                    case "Cieling":
-                                        Instantiate<GameObject>(attack.projectile, new Vector2(transform.position.x + attack.projectile.GetComponent<Projectile>().launchingPoint.x, transform.position.y - attack.projectile.GetComponent<Projectile>().launchingPoint.y), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                        break;
-                                    case "Right":
-                                        Instantiate<GameObject>(attack.projectile, new Vector2(transform.position.x + attack.projectile.GetComponent<Projectile>().launchingPoint.y, transform.position.y - attack.projectile.GetComponent<Projectile>().launchingPoint.x), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                        break;
-                                    case "Left":
-                                        Instantiate<GameObject>(attack.projectile, new Vector2(transform.position.x - attack.projectile.GetComponent<Projectile>().launchingPoint.y, transform.position.y + attack.projectile.GetComponent<Projectile>().launchingPoint.x), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                        break;
+                                    unAttack();
                                 }
                             }
                         }
-                        currentCombo++;
-                        actionCooldown = -attack.recharge;
                     }
+                   
                     if (player.GetButton("Attack") && player.GetButton("Special"))
                     {
 
                     }
                 }
             }
-        }
 
+            if (player.GetButtonUp("Special"))
+            {
+                if (storedProjectile != null)
+                {
+                    anim.SetTrigger("unleashed");
+                    if (attackCharge >= 1)
+                    {
+
+                        if (faceRight)
+                        {
+                            switch (Target.gameObject.tag)
+                            {
+                                case "Floor":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                                case "Cieling":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                                case "Right":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                                case "Left":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                            }
+                        }
+                        if (!faceRight)
+                        {
+                            switch (Target.gameObject.tag)
+                            {
+                                case "Floor":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                                case "Cieling":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                                case "Right":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                                case "Left":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                            }
+                        }
+                    }
+                    currentCombo++;
+                    actionCooldown = -attack.recharge;
+                }
+            }
+        }
     }
     void ProccessInput()
     {
