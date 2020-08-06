@@ -34,5 +34,6 @@ public class BubbleBomb : MonoBehaviour
                 anim.SetTrigger("done");
             }
                     }
+        
     }
 }

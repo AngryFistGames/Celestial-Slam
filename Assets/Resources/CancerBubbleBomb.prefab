@@ -207,7 +207,7 @@ MonoBehaviour:
   rb: {fileID: 2122743717271069775}
   bc: {fileID: -2919320533818672999}
   rightFace: 0
-  directionSpeed: 50
+  directionSpeed: 25
 --- !u!114 &1179780196978769405
 MonoBehaviour:
   m_ObjectHideFlags: 0

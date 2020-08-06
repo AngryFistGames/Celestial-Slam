@@ -115,7 +115,7 @@ public class Projectile : MonoBehaviour
                         anim.SetTrigger("done");
                     }
                 }
-                if (collision.gameObject.tag == "Player" && !collision.gameObject.GetComponent<PlayerControl>().dodging && (collision.gameObject.GetComponent<PlayerControl>().GetInstanceID() != GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).GetInstanceID()))
+                if (collision.gameObject.tag == "Player" && (!collision.gameObject.GetComponent<PlayerControl>().dodging) && (collision.gameObject.GetComponent<PlayerControl>().GetInstanceID() != GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).GetInstanceID()))
                 {
                     anim.SetTrigger("done");
                 }

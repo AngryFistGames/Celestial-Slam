@@ -1028,16 +1028,16 @@ public class PlayerControl : MonoBehaviour
                             switch (Target.gameObject.tag)
                             {
                                 case "Floor":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
                                     break;
                                 case "Cieling":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
                                     break;
                                 case "Right":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
                                     break;
                                 case "Left":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
                                     break;
                             }
                         }
@@ -1046,22 +1046,23 @@ public class PlayerControl : MonoBehaviour
                             switch (Target.gameObject.tag)
                             {
                                 case "Floor":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
                                     break;
                                 case "Cieling":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
                                     break;
                                 case "Right":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().launchingPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().launchingPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
                                     break;
                                 case "Left":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().launchingPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().launchingPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
                                     break;
                             }
                         }
+
+                        currentCombo++;
+                        actionCooldown = -attack.recharge;
                     }
-                    currentCombo++;
-                    actionCooldown = -attack.recharge;
                 }
             }
         }
