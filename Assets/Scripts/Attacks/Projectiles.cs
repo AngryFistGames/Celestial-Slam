@@ -10,6 +10,7 @@ public class Projectiles : ScriptableObject
     public float priorityPower;
     public Vector2 knockback;
     public float GuardBreaking;
+    public float gripLoss;
     public float charge;
     public bool doesRikochet;
     public Vector2 rikochetAngle;

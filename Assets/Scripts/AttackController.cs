@@ -12,6 +12,7 @@ public class AttackController : MonoBehaviour
     public bool SweetSpot; //is this hitbox a sweetspot
     public bool isProjectile;
     public Vector2 knockback;
+    public float gripLoss;
     public float GuardBreaking;
     public int charge = 1;
 
@@ -23,6 +24,7 @@ public class AttackController : MonoBehaviour
             if (technique != null)
             {
                 isAttacking = true;
+                gripLoss = technique.gripLoss * charge;
                 priorityPower = technique.priorityPower * GetComponentInParent<PlayerControl>().attackPower;
                 damagePower = technique.damagePower * GetComponentInParent<PlayerControl>().attackPower * charge;
                 knockback = technique.knockback * charge;
@@ -36,6 +38,7 @@ public class AttackController : MonoBehaviour
             if (ammo != null)
             {
                 isAttacking = true;
+                gripLoss = ammo.gripLoss * charge;
                 priorityPower = ammo.priorityPower;
                 damagePower = ammo.damagePower * charge;
                 knockback = ammo.knockback;

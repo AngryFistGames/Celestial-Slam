@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     public Animator anim;
     public Vector2 direction;
     public Vector2 _direction;
+    public Quaternion  _rotation;
     public bool rikochet;
     public Vector2 bounceAngle;
     float timer = 0f;
@@ -21,6 +22,7 @@ public class Projectile : MonoBehaviour
     public bool rightFace;
     string floor;
     public float directionSpeed;
+    public float waitTime = 0f;
 
     private void Awake()
     {
@@ -28,9 +30,12 @@ public class Projectile : MonoBehaviour
     }
     void OnEnable()
     {
-        bc = GetComponent<BoxCollider2D>();
+        if (GetComponent<BoxCollider2D>())
+        {
+            bc = GetComponent<BoxCollider2D>();
+            StartCoroutine(EnableCollider());
+        }
         rightFace = GetComponentInParent<PlayerTracker>().faceRight;
-        StartCoroutine(EnableCollider());
         direction = ammo.trajectory;
         rikochet = ammo.doesRikochet;
         if (rikochet)
@@ -47,18 +52,23 @@ public class Projectile : MonoBehaviour
             {
                 case "Floor":
                     _direction = new Vector2(direction.x * Time.deltaTime * directionSpeed, direction.y * Time.deltaTime * directionSpeed);
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
                     break;
                 case "Cieling":
                     _direction = new Vector2(-direction.x * Time.deltaTime * directionSpeed, -direction.y * Time.deltaTime * directionSpeed);
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
                     break;
                 case "Left":
                     _direction = new Vector2(-direction.y * Time.deltaTime * directionSpeed, -direction.x * Time.deltaTime * directionSpeed);
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
                     break;
                 case "Right":
                     _direction = new Vector2(direction.y * Time.deltaTime * directionSpeed, direction.x * Time.deltaTime * directionSpeed);
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
                     break;
                 default:
                     _direction = direction * Time.deltaTime;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
                     break;
             }
         }
@@ -68,22 +78,31 @@ public class Projectile : MonoBehaviour
                 {
                     case "Floor":
                         _direction = new Vector2(-direction.x * Time.deltaTime * directionSpeed, direction.y * Time.deltaTime * directionSpeed);
-                        break;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    break;
                     case "Cieling":
                         _direction = new Vector2(direction.x * Time.deltaTime * directionSpeed, -direction.y * Time.deltaTime * directionSpeed);
-                        break;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    break;
                     case "Left":
                     _direction = new Vector2(direction.y * Time.deltaTime * directionSpeed, direction.x * Time.deltaTime * directionSpeed);
-                        break;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    break;
                     case "Right":
                     _direction = new Vector2(-direction.y * Time.deltaTime * directionSpeed, -direction.x * Time.deltaTime * directionSpeed);
-                        break;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    break;
                     default:
                     _direction = Vector2.up  * Time.deltaTime;
-                        break;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    break;
                 }
             }
-        rb.velocity = _direction;
+        if (rb != null)
+        {
+            rb.velocity = _direction;
+        }
+        transform.rotation = _rotation;
         timer += Time.deltaTime;
         if (timer >= shotRange)
         {
@@ -112,18 +131,22 @@ public class Projectile : MonoBehaviour
                     }
                     if (!rikochet)
                     {
+                if (anim != null)
                         anim.SetTrigger("done");
                     }
                 }
-                if (collision.gameObject.tag == "Player" && (!collision.gameObject.GetComponent<PlayerControl>().dodging) && (collision.gameObject.GetComponent<PlayerControl>().GetInstanceID() != GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).GetInstanceID()))
+                if (collision.gameObject.tag == "Player" && (!collision.gameObject.GetComponent<PlayerControl>().dodging) && (collision.gameObject.name != characterName + GetComponentInParent<PlayerTracker>().playerNumber))
                 {
                     anim.SetTrigger("done");
                 }
             }
             IEnumerator EnableCollider()
             {
-                yield return new WaitForSeconds(0.4f);
-                bc.enabled = true; //enable the collider
+                yield return new WaitForSeconds(waitTime);
+        if (bc != null)
+        {
+            bc.enabled = true; //enable the collider
+        }
             }
 
             void RangeOut()

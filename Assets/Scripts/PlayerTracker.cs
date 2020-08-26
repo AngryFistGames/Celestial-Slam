@@ -9,6 +9,7 @@ public class PlayerTracker : MonoBehaviour
     public PlayerControl playerSelected;
     public GravAttractor targetTag;
     public bool faceRight;
+    public int playerNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -23,5 +24,13 @@ public class PlayerTracker : MonoBehaviour
         attackCharge = playerSelected.attackCharge;
         targetTag = playerSelected.Target;
         faceRight = playerSelected.faceRight;
+    }
+
+    public void FlipProjectiles()
+    {
+        if (GetComponentInChildren<scr_Flip>() != null)
+        {
+            GetComponentInChildren<scr_Flip>().rend.flipX = !GetComponentInChildren<scr_Flip>().rend.flipX;
+        }
     }
 }

@@ -12,7 +12,9 @@ public class BasicAttack : ScriptableObject
     public Vector2 knockback;
     public float GuardBreaking;
     public bool chargable;
+    public bool delay;
     public float recharge = 0.5f;
+    public float gripLoss;
     public GameObject projectile;
 
 }

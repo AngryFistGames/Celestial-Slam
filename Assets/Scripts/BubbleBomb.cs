@@ -16,8 +16,7 @@ public class BubbleBomb : MonoBehaviour
         if (GetComponentInParent<PlayerTracker>() != null && launchSize > 0)
         {
             transform.localScale = new Vector2(launchSize * 0.2f, launchSize * 0.2f);
-            GetComponent<Projectile>().directionSpeed = (GetComponent<Projectile>().directionSpeed / launchSize);
-            GetComponent<Projectile>().shotRange = (GetComponent<Projectile>().shotRange * launchSize);
+            GetComponent<Projectile>().directionSpeed = (GetComponent<Projectile>().directionSpeed * launchSize);
         }
         if (launchSize <= 0)
         {

@@ -14,6 +14,7 @@ public class scr_pop : MonoBehaviour
 
    public void Pop()
     {
+        parentBubble.GetComponent<Projectile>().directionSpeed = 0;
         Destroy(parentBubble, .01f);
     }
 }

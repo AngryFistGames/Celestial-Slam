@@ -201,13 +201,14 @@ MonoBehaviour:
   _direction: {x: 0, y: 0}
   rikochet: 1
   bounceAngle: {x: 0, y: 0}
-  shotRange: 4
+  shotRange: 1.75
   characterName: Cancer
   launchingPoint: {x: 0.5, y: 0}
   rb: {fileID: 2122743717271069775}
   bc: {fileID: -2919320533818672999}
   rightFace: 0
-  directionSpeed: 25
+  directionSpeed: 0.75
+  waitTime: 0.4
 --- !u!114 &1179780196978769405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,5 +291,6 @@ MonoBehaviour:
   SweetSpot: 0
   isProjectile: 1
   knockback: {x: 12, y: 12}
+  gripLoss: 0
   GuardBreaking: 0
   charge: 1
