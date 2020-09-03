@@ -324,6 +324,7 @@ MonoBehaviour:
   SweetSpot: 1
   isProjectile: 0
   knockback: {x: 0, y: 0}
+  gripLoss: 0
   GuardBreaking: 0
   charge: 1
 --- !u!1 &953209296794254540
@@ -506,7 +507,6 @@ MonoBehaviour:
   localHoriz: 0
   localVert: 0
   HP: 0
-  weight: 0
   attackPower: 1
   defensePower: 1
   Guard: 100
@@ -517,6 +517,8 @@ MonoBehaviour:
   leapSpeed: 0
   maxJumpCount: 1
   aimSpeed: 70
+  maxGrip: 0
+  gripLoss: 0
   vulnerable: 0
 --- !u!1 &953209296813171068
 GameObject:
@@ -679,6 +681,7 @@ MonoBehaviour:
   SweetSpot: 0
   isProjectile: 0
   knockback: {x: 0, y: 0}
+  gripLoss: 0
   GuardBreaking: 0
   charge: 1
 --- !u!1 &953209296915079613
@@ -1392,7 +1395,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953209297559352982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2987019, y: -0.3839959, z: 0}
+  m_LocalPosition: {x: -0.29870194, y: -0.3839959, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 953209296794254531}
@@ -1611,6 +1614,7 @@ MonoBehaviour:
   SweetSpot: 0
   isProjectile: 0
   knockback: {x: 0, y: 0}
+  gripLoss: 0
   GuardBreaking: 0
   charge: 1
 --- !u!1 &953209297749751973
@@ -1691,6 +1695,7 @@ MonoBehaviour:
   SweetSpot: 1
   isProjectile: 0
   knockback: {x: 0, y: 0}
+  gripLoss: 0
   GuardBreaking: 0
   charge: 1
 --- !u!1 &953209297865319818
@@ -1935,6 +1940,7 @@ MonoBehaviour:
   SweetSpot: 1
   isProjectile: 0
   knockback: {x: 0, y: 0}
+  gripLoss: 0
   GuardBreaking: 0
   charge: 1
 --- !u!1 &953209298241341970
@@ -2016,6 +2022,7 @@ MonoBehaviour:
   SweetSpot: 0
   isProjectile: 0
   knockback: {x: 0, y: 0}
+  gripLoss: 0
   GuardBreaking: 0
   charge: 1
 --- !u!1 &3267932418951259475

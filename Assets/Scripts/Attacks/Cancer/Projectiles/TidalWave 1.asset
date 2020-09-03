@@ -17,7 +17,7 @@ MonoBehaviour:
   priorityPower: 6
   knockback: {x: 1, y: 16}
   GuardBreaking: 1
-  gripLoss: 0
+  gripLoss: 5
   charge: 0
   doesRikochet: 0
   rikochetAngle: {x: 0, y: 0}

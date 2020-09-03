@@ -16,7 +16,7 @@ MonoBehaviour:
   HitPoints: 1000
   jumpHeight: 14
   speed: 25
-  weight: 3
+  weight: 50
   BaseAttack: 1
   BaseDefense: 1
   techniques:
@@ -36,3 +36,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f016e22cb6943a34a870f9c4f2e009d5, type: 2}
   - {fileID: 11400000, guid: eca86ef63b0e01343a7d6e51a5ee3f59, type: 2}
   - {fileID: 11400000, guid: 615f3aee2d950b9498cad702198a4dba, type: 2}
+  - {fileID: 11400000, guid: 71524c4e651339447a764a7cdb5ca710, type: 2}
+  - {fileID: 11400000, guid: 71524c4e651339447a764a7cdb5ca710, type: 2}

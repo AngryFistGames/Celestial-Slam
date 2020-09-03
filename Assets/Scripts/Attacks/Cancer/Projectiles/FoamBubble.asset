@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 939ff8631510f5c4e87223cd420c67db, type: 3}
-  m_Name: BubbleBomb
+  m_Name: FoamBubble
   m_EditorClassIdentifier: 
-  trajectory: {x: 100, y: 0}
-  damagePower: 20
-  priorityPower: 5
-  knockback: {x: 15, y: 20}
-  GuardBreaking: 0
-  gripLoss: 4
-  charge: 0
-  doesRikochet: 1
-  rikochetAngle: {x: 0, y: -90}
-  launchPoint: {x: 1.45, y: 0}
+  trajectory: {x: 0, y: 0}
+  damagePower: 2
+  priorityPower: 1
+  knockback: {x: 2, y: 0}
+  GuardBreaking: 1.5
+  gripLoss: 2
+  charge: 1
+  doesRikochet: 0
+  rikochetAngle: {x: 0, y: 0}
+  launchPoint: {x: 0, y: 0}

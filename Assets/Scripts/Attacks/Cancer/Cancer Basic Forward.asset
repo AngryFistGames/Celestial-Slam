@@ -19,5 +19,7 @@ MonoBehaviour:
   knockback: {x: 14, y: 14}
   GuardBreaking: 1
   chargable: 0
+  delay: 0
   recharge: 0.5
+  gripLoss: 4
   projectile: {fileID: 0}

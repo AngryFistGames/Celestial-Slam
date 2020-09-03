@@ -17,7 +17,10 @@ MonoBehaviour:
   damagePower: 0
   priorityPower: 0
   knockback: {x: 0, y: 0}
+  GuardBreaking: 0
   chargable: 1
+  delay: 0
   recharge: 0.6
+  gripLoss: 4
   projectile: {fileID: 5455798609294700550, guid: e6035085eec63744987b9f612768e416,
     type: 3}

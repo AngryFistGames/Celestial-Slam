@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerTracker : MonoBehaviour
 {
+    public bool defeated = false;
     public float hitPoints;
     public int attackCharge;
     public PlayerControl playerSelected;
@@ -21,6 +22,10 @@ public class PlayerTracker : MonoBehaviour
     void Update()
     {
         hitPoints = playerSelected.HP;
+        if (hitPoints <= 0)
+        {
+            defeated = true;
+        }
         attackCharge = playerSelected.attackCharge;
         targetTag = playerSelected.Target;
         faceRight = playerSelected.faceRight;
