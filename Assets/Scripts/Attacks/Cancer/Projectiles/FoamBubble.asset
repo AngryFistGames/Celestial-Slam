@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: FoamBubble
   m_EditorClassIdentifier: 
   trajectory: {x: 0, y: 0}
-  damagePower: 2
+  damagePower: 0.2
   priorityPower: 1
   knockback: {x: 2, y: 0}
-  GuardBreaking: 1.5
-  gripLoss: 2
+  GuardBreaking: 0.1
+  gripLoss: 0.1
   charge: 1
   doesRikochet: 0
   rikochetAngle: {x: 0, y: 0}

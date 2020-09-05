@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: WavePillar
   m_EditorClassIdentifier: 
   trajectory: {x: 0, y: 0}
-  damagePower: 55
-  priorityPower: 11
+  damagePower: 1.5
+  priorityPower: 8
   knockback: {x: 5, y: 22}
-  GuardBreaking: 3
-  gripLoss: 7
+  GuardBreaking: 1.5
+  gripLoss: 0.7
   charge: 0
   doesRikochet: 0
   rikochetAngle: {x: 0, y: 0}

@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Whirl Claw
   animationName: CancerDownAAttack
-  damagePower: 11
+  damagePower: 2.1
   priorityPower: 4
   knockback: {x: 12, y: 16}
   GuardBreaking: 1.25
   chargable: 0
   delay: 0
   recharge: 0.5
-  gripLoss: 5
+  gripLoss: 1.5
   projectile: {fileID: 0}

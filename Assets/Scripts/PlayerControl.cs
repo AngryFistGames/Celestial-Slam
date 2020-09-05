@@ -1846,19 +1846,23 @@ public class PlayerControl : MonoBehaviour
         anim.SetBool("knocked out", true);
         canInput = false;
         canMove = false;
-        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir * .01f, 10000, 8);
-        GravAttractor wall = hitInfo.transform.GetComponent<GravAttractor>();
-        storedTarget = wall;
-        Vector2 launchTarget = hitInfo.point;
-        Target = storedTarget;
-        transform.position = launchTarget;
-        if (Target.tag == "Floor" || Target.tag == "Cieling")
+        RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, 10000, floor);
+        if (hitInfo)
         {
-            Shaker.GetComponent<shake>().Shaking("top");
-        }
-        if (Target.tag == "Right" || Target.tag == "Left")
-        {
-            Shaker.GetComponent<shake>().Shaking("side");
+            GravAttractor wall = hitInfo.transform.GetComponent<GravAttractor>();
+            storedTarget = wall; ;
+            Target = storedTarget;
+            Vector2 launchTarget = hitInfo.point;
+            transform.position = launchTarget;
+            if (Target.tag == "Floor" || Target.tag == "Cieling")
+            {
+                Shaker.GetComponent<shake>().Shaking("top");
+            }
+            if (Target.tag == "Right" || Target.tag == "Left")
+            {
+                Shaker.GetComponent<shake>().Shaking("side");
+            }
+            gripLoss = 1f;
         }
     }
     public void Guarded()
