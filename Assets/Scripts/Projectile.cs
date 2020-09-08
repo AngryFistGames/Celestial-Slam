@@ -135,10 +135,13 @@ public class Projectile : MonoBehaviour
                         anim.SetTrigger("done");
                     }
                 }
-                if (collision.gameObject.tag == "Player" && (!collision.gameObject.GetComponent<PlayerControl>().dodging) && (collision.gameObject.name != characterName + GetComponentInParent<PlayerTracker>().playerNumber))
-                {
-                    anim.SetTrigger("done");
-                }
+        if (collision.gameObject.tag == "Player" && (!collision.gameObject.GetComponent<PlayerControl>().dodging) && (collision.gameObject.name != characterName + GetComponentInParent<PlayerTracker>().playerNumber))
+        {
+            if (anim != null)
+            {
+                anim.SetTrigger("done");
+            }
+        }
             }
             IEnumerator EnableCollider()
             {

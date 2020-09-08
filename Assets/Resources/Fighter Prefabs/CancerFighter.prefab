@@ -478,8 +478,7 @@ MonoBehaviour:
   aim: 0
   aimExtend: 0.25
   Shaker: {fileID: 0}
-  fallMultiplier: 6
-  lowJumpMultiplier: 5.8
+  lowJumpMultiplier: 20
   storedProjectile: {fileID: 0}
   Shield: {fileID: 0}
   attack: {fileID: 0}

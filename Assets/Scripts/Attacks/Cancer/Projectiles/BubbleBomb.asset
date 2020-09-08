@@ -16,7 +16,7 @@ MonoBehaviour:
   damagePower: 20
   priorityPower: 5
   knockback: {x: 15, y: 20}
-  GuardBreaking: 0
+  GuardBreaking: 0.5
   gripLoss: 4
   charge: 0
   doesRikochet: 1

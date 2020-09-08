@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 4137174880366922613}
   - component: {fileID: 5714536914676820255}
   - component: {fileID: 6555290704245736090}
+  - component: {fileID: -916764731662049509}
   m_Layer: 13
   m_Name: CancerWave
   m_TagString: HitBox
@@ -219,8 +220,8 @@ MonoBehaviour:
   rb: {fileID: 4137174880366922609}
   bc: {fileID: 4137174880366922615}
   rightFace: 0
-  directionSpeed: -12
-  waitTime: 0
+  directionSpeed: 7
+  waitTime: 0.5
 --- !u!114 &5714536914676820255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,3 +255,26 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-916764731662049509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4137174880366922608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7364195d7efd735459d47e4216843e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  technique: {fileID: 0}
+  ammo: {fileID: 11400000, guid: ae3bfc5caea7f124594a12d933458946, type: 2}
+  priorityPower: 0
+  isAttacking: 0
+  damagePower: 0
+  SweetSpot: 0
+  isProjectile: 0
+  knockback: {x: 0, y: 0}
+  gripLoss: 0
+  GuardBreaking: 0
+  charge: 1

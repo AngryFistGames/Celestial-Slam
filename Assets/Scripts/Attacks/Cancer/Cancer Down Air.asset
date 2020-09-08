@@ -16,7 +16,7 @@ MonoBehaviour:
   animationName: CancerDownAir
   damagePower: 15
   priorityPower: 2
-  knockback: {x: 4, y: -30}
+  knockback: {x: 4, y: -60}
   GuardBreaking: 5
   chargable: 0
   delay: 0

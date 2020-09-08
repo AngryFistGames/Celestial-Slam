@@ -48,15 +48,17 @@ MonoBehaviour:
   anim: {fileID: 0}
   direction: {x: 0, y: 0}
   _direction: {x: 0, y: 0}
+  _rotation: {x: 0, y: 0, z: 0, w: 0}
   rikochet: 0
   bounceAngle: {x: 0, y: 0}
   shotRange: 0
-  characterName: 
+  characterName: Cancer
   launchingPoint: {x: 0, y: 0}
   rb: {fileID: 0}
   bc: {fileID: 0}
   rightFace: 0
   directionSpeed: 0
+  waitTime: 0
 --- !u!114 &3793958395613380914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,3 +74,4 @@ MonoBehaviour:
   projectiles:
   - {fileID: 4137174880366922608, guid: 0ba4a89cb454f3544afbd3c6319930b9, type: 3}
   - {fileID: 4137174880366922608, guid: 4662227760cd53c4c8606e0be07f33db, type: 3}
+  faceRight: 1

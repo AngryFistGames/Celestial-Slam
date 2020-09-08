@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchSize: 0
-  anim: {fileID: 0}
+  anim: {fileID: 5455798608063822181}
 --- !u!114 &-8611750040240296929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,16 +199,17 @@ MonoBehaviour:
   anim: {fileID: 5455798608063822181}
   direction: {x: 1, y: 0}
   _direction: {x: 0, y: 0}
-  rikochet: 1
+  _rotation: {x: 0, y: 0, z: 0, w: 0}
+  rikochet: 0
   bounceAngle: {x: 0, y: 0}
   shotRange: 1.75
   characterName: Cancer
-  launchingPoint: {x: 0.5, y: 0}
+  launchingPoint: {x: 0, y: 0}
   rb: {fileID: 2122743717271069775}
   bc: {fileID: -2919320533818672999}
   rightFace: 0
-  directionSpeed: 0.75
-  waitTime: 0.4
+  directionSpeed: 3
+  waitTime: 0
 --- !u!114 &1179780196978769405
 MonoBehaviour:
   m_ObjectHideFlags: 0

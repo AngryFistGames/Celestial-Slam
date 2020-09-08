@@ -26,7 +26,6 @@ public class PlayerControl : MonoBehaviour
     public float aim;
     public float aimExtend = 0.25f;
     public GameObject Shaker;
-    public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
     public GameObject storedProjectile;
     public GameObject Shield;
@@ -111,7 +110,7 @@ public class PlayerControl : MonoBehaviour
             jumpCount = 0;
             if (!isDamaged)
             {
-                gripLoss -= 0.1f;
+                gripLoss -= 0.05f * Time.deltaTime;
                 if (gripLoss < 1)
                 {
                     gripLoss = 1;
@@ -124,26 +123,26 @@ public class PlayerControl : MonoBehaviour
         }
         if ((dodging) && !grounded)
         {
-                GetComponent<GravBody>().gravity = 0.5f;
+                GetComponent<GravBody>().gravity = 0.25f;
             if ((Horiz <= 0.75) && (Vert <= 0.75) && (Horiz >= -0.75) && (Vert >= 0.75))
             {
-                rigidBody.velocity = Vector2.zero;
+                rigidBody.velocity = Vector2.zero * Time.deltaTime;
             }
             if (Horiz > 0.75)
             {
-                rigidBody.velocity = Vector2.right;
+                rigidBody.velocity = Vector2.right * Time.deltaTime;
             }
             if (Horiz < -0.75)
             {
-                rigidBody.velocity = Vector2.left;
+                rigidBody.velocity = Vector2.left * Time.deltaTime;
             }
             if (Vert > 0.75)
             {
-                rigidBody.velocity = Vector2.up;
+                rigidBody.velocity = Vector2.up * Time.deltaTime;
             }
             if (Vert < -0.75)
             {
-                rigidBody.velocity = Vector2.down;
+                rigidBody.velocity = Vector2.down * Time.deltaTime;
             }
         }
         if (!dodging)
@@ -154,7 +153,7 @@ public class PlayerControl : MonoBehaviour
                 case "Floor":
                     if (rigidBody.velocity.y < 0)
                     {
-                        rigidBody.velocity += Vector2.up * GetComponent<GravBody>().gravity * (fallMultiplier - 1) * Time.deltaTime;
+                        rigidBody.velocity += Vector2.up * GetComponent<GravBody>().gravity * Time.deltaTime;
                     }
                     else
                     if (rigidBody.velocity.y > 0 && !player.GetButton("Jump"))
@@ -165,7 +164,7 @@ public class PlayerControl : MonoBehaviour
                 case "Cieling":
                     if (rigidBody.velocity.y > 0)
                     {
-                        rigidBody.velocity += Vector2.down * GetComponent<GravBody>().gravity * (fallMultiplier - 1) * Time.deltaTime;
+                        rigidBody.velocity += Vector2.down * GetComponent<GravBody>().gravity * Time.deltaTime;
                     }
                     else
                     if (rigidBody.velocity.y < 0 && !player.GetButton("Jump"))
@@ -176,7 +175,7 @@ public class PlayerControl : MonoBehaviour
                 case "Left":
                     if (rigidBody.velocity.x < 0)
                     {
-                        rigidBody.velocity += Vector2.right * GetComponent<GravBody>().gravity * (fallMultiplier - 1) * Time.deltaTime;
+                        rigidBody.velocity += Vector2.right * GetComponent<GravBody>().gravity * Time.deltaTime;
                     }
                     else
                     if (rigidBody.velocity.x > 0 && !player.GetButton("Jump"))
@@ -187,7 +186,7 @@ public class PlayerControl : MonoBehaviour
                 case "Right":
                     if (rigidBody.velocity.x > 0)
                     {
-                        rigidBody.velocity += Vector2.left * GetComponent<GravBody>().gravity * (fallMultiplier - 1) * Time.deltaTime;
+                        rigidBody.velocity += Vector2.left * GetComponent<GravBody>().gravity * Time.deltaTime;
                     }
                     else
                     if (rigidBody.velocity.x < 0 && !player.GetButton("Jump"))
@@ -339,11 +338,11 @@ public class PlayerControl : MonoBehaviour
                 case "Floor":
                 if (canMove)
                 {
-                    mover = new Vector2(Horiz * moveSpeed, 0);
+                    mover = new Vector2(Horiz * moveSpeed * Time.deltaTime, 0);
                 }
                 else
                 {
-                    mover = new Vector2((Horiz * moveSpeed) / 5, 0);
+                    mover = new Vector2((Horiz * moveSpeed * Time.deltaTime) / 5, 0);
                 }
                 if ((Horiz > 0) && (!action))
                     {
@@ -364,11 +363,11 @@ public class PlayerControl : MonoBehaviour
                 case "Cieling":
                 if (canMove)
                 {
-                    mover = new Vector2(Horiz * moveSpeed, 0);
+                    mover = new Vector2(Horiz * moveSpeed * Time.deltaTime, 0);
                 }
                 else
                 {
-                    mover = new Vector2((Horiz * moveSpeed) / 5, 0);
+                    mover = new Vector2((Horiz * moveSpeed * Time.deltaTime) / 5, 0);
                 }
                 if ((Horiz < 0) && (!action))
                     {
@@ -390,11 +389,11 @@ public class PlayerControl : MonoBehaviour
                 case "Left":
                 if (canMove)
                 {
-                    mover = new Vector2(0, Vert * moveSpeed);
+                    mover = new Vector2(0, Vert * moveSpeed * Time.deltaTime);
                 }
                 else
                 {
-                    mover = new Vector2(0, (Vert * moveSpeed)/5);
+                    mover = new Vector2(0, (Vert * moveSpeed * Time.deltaTime) /5);
                 }
                 if ((Vert < 0) && (!action))
                     {
@@ -416,11 +415,11 @@ public class PlayerControl : MonoBehaviour
                 case "Right":
                 if (canMove)
                 {
-                    mover = new Vector2(0, Vert * moveSpeed);
+                    mover = new Vector2(0, Vert * moveSpeed * Time.deltaTime);
                 }
                 else
                 {
-                    mover = new Vector2(0, (Vert * moveSpeed) / 5);
+                    mover = new Vector2(0, (Vert * moveSpeed * Time.deltaTime) / 5);
                 }
                 if ((Vert > 0) && (!action))
                     {
@@ -441,7 +440,7 @@ public class PlayerControl : MonoBehaviour
                 }
                     break;
                 default:
-                    mover = new Vector2(Horiz * moveSpeed, 0);
+                    mover = new Vector2(Horiz * moveSpeed * Time.deltaTime, 0);
                     if ((Horiz > 0) && (!action))
                     {
                         speed = Mathf.Abs(Horiz);
@@ -471,7 +470,7 @@ public class PlayerControl : MonoBehaviour
                 canInput = true;
                 if ((canMove) && (!action) && (!isBlocking)) 
                 {
-                    rigidBody.AddForce(mover);
+                    rigidBody.AddForce(mover * 100);
                     if (anim.GetBool("knocked out") == true)
                     {
                         anim.SetBool("knocked out", false);
@@ -1568,7 +1567,7 @@ public class PlayerControl : MonoBehaviour
                 {
                     Vector2 knock = new Vector2();
                     Vector2 source = new Vector2();
-                    float back = gripLoss / maxGrip;
+                    float back = (gripLoss / maxGrip) * 10;
                     if (collision.gameObject.GetComponent<AttackController>().priorityPower >= fighter.BaseDefense)
                     {
                         string sourceGrav = collision.gameObject.GetComponentInParent<PlayerTracker>().targetTag.gameObject.tag;
