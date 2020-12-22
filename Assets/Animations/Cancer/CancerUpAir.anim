@@ -186,7 +186,39 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: Cbody/CancerLeftPincer1
-  m_PositionCurves: []
+  m_PositionCurves:
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: -1.2, y: 4.79, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Cbody/CancerEyeStalks2
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: {x: 0.51, y: 4.85, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+        outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Cbody/CancerEyeStalks
   m_ScaleCurves:
   - curve:
       serializedVersion: 2
@@ -602,10 +634,10 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 7375654005729307383, guid: 33fa48bd7e257fe4384f9a448153f699,
+      value: {fileID: -5863789977729380078, guid: 0b283fca10d19fc459556bfbe9be4551,
         type: 3}
     - time: 0.23333333
-      value: {fileID: 7375654005729307383, guid: 33fa48bd7e257fe4384f9a448153f699,
+      value: {fileID: -5863789977729380078, guid: 0b283fca10d19fc459556bfbe9be4551,
         type: 3}
     attribute: m_Sprite
     path: Cbody
@@ -613,10 +645,10 @@ AnimationClip:
     script: {fileID: 0}
   - curve:
     - time: 0
-      value: {fileID: 6233442398513016155, guid: 33fa48bd7e257fe4384f9a448153f699,
+      value: {fileID: -3401026069384127277, guid: 0b283fca10d19fc459556bfbe9be4551,
         type: 3}
     - time: 0.25
-      value: {fileID: 6233442398513016155, guid: 33fa48bd7e257fe4384f9a448153f699,
+      value: {fileID: -3401026069384127277, guid: 0b283fca10d19fc459556bfbe9be4551,
         type: 3}
     attribute: m_Sprite
     path: Cbody/CancerEyeStalks/CancerEye1
@@ -624,13 +656,13 @@ AnimationClip:
     script: {fileID: 0}
   - curve:
     - time: 0
-      value: {fileID: 6233442398513016155, guid: 33fa48bd7e257fe4384f9a448153f699,
+      value: {fileID: -3401026069384127277, guid: 0b283fca10d19fc459556bfbe9be4551,
         type: 3}
     - time: 0.25
-      value: {fileID: 6233442398513016155, guid: 33fa48bd7e257fe4384f9a448153f699,
+      value: {fileID: -3401026069384127277, guid: 0b283fca10d19fc459556bfbe9be4551,
         type: 3}
     attribute: m_Sprite
-    path: Cbody/CancerEyeStalks/CancerEye1 (1)
+    path: Cbody/CancerEyeStalks2/CancerEye1 (1)
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -760,19 +792,33 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     - serializedVersion: 2
-      path: 4101058213
+      path: 3234281501
       attribute: 0
       script: {fileID: 0}
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+    - serializedVersion: 2
+      path: 2844225073
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 883561208
+      attribute: 1
+      script: {fileID: 0}
+      typeID: 4
+      customType: 0
+      isPPtrCurve: 0
     pptrCurveMapping:
-    - {fileID: 7375654005729307383, guid: 33fa48bd7e257fe4384f9a448153f699, type: 3}
-    - {fileID: 7375654005729307383, guid: 33fa48bd7e257fe4384f9a448153f699, type: 3}
-    - {fileID: 6233442398513016155, guid: 33fa48bd7e257fe4384f9a448153f699, type: 3}
-    - {fileID: 6233442398513016155, guid: 33fa48bd7e257fe4384f9a448153f699, type: 3}
-    - {fileID: 6233442398513016155, guid: 33fa48bd7e257fe4384f9a448153f699, type: 3}
-    - {fileID: 6233442398513016155, guid: 33fa48bd7e257fe4384f9a448153f699, type: 3}
+    - {fileID: -5863789977729380078, guid: 0b283fca10d19fc459556bfbe9be4551, type: 3}
+    - {fileID: -5863789977729380078, guid: 0b283fca10d19fc459556bfbe9be4551, type: 3}
+    - {fileID: -3401026069384127277, guid: 0b283fca10d19fc459556bfbe9be4551, type: 3}
+    - {fileID: -3401026069384127277, guid: 0b283fca10d19fc459556bfbe9be4551, type: 3}
+    - {fileID: -3401026069384127277, guid: 0b283fca10d19fc459556bfbe9be4551, type: 3}
+    - {fileID: -3401026069384127277, guid: 0b283fca10d19fc459556bfbe9be4551, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -1945,6 +1991,120 @@ AnimationClip:
     attribute: m_IsActive
     path: Cbody/CMouth
     classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: -1.2
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: Cbody/CancerEyeStalks2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 4.79
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: Cbody/CancerEyeStalks2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: Cbody/CancerEyeStalks2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.51
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.x
+    path: Cbody/CancerEyeStalks
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 4.85
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.y
+    path: Cbody/CancerEyeStalks
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalPosition.z
+    path: Cbody/CancerEyeStalks
+    classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:

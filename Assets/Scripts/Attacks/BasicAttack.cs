@@ -13,6 +13,7 @@ public class BasicAttack : ScriptableObject
     public float GuardBreaking;
     public bool chargable;
     public bool delay;
+    public bool flinchless;
     public float recharge = 0.5f;
     public float gripLoss;
     public GameObject projectile;

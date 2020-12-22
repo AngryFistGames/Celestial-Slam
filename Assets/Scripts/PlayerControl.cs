@@ -45,7 +45,7 @@ public class PlayerControl : MonoBehaviour
     public float actionCooldown = -0.5f;
     public bool jump;
     public float jumpDelay = 0.25f;
-    float jumpTimer;
+    protected float jumpTimer;
     public bool canInput;
     public bool isMoving;
     public int jumpCount = 0;
@@ -1556,7 +1556,7 @@ public class PlayerControl : MonoBehaviour
         action = false;
     }
 
-    public void OnTriggerStay2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "HitBox")
         {
@@ -1687,7 +1687,7 @@ public class PlayerControl : MonoBehaviour
                         }
 
                         isDamaged = true;
-                        rigidBody.AddForceAtPosition(knock * source * back, collision.transform.localPosition, ForceMode2D.Force);
+                        rigidBody.AddForceAtPosition(knock * source * back, collision.transform.localPosition * Time.deltaTime, ForceMode2D.Force);
                     }
                     damage += collision.gameObject.GetComponent<AttackController>().damagePower;
                     gripLoss += collision.gameObject.GetComponent<AttackController>().gripLoss;
@@ -1825,7 +1825,8 @@ public class PlayerControl : MonoBehaviour
                         }
                     Guard -= collision.gameObject.GetComponent<AttackController>().GuardBreaking;
                 }
-                       
+                GetComponentInParent<PlayerTracker>().shrinkTimer = GetComponentInParent<PlayerTracker>().shrinkTimerMax;
+                GetComponentInParent<PlayerTracker>().SetHealth(GetComponentInParent<PlayerTracker>().GetHealthNormalized());
                         }
             else return;
         }

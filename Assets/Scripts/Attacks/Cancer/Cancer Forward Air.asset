@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Double Air Pinch
   animationName: CancerForwardAir
-  damagePower: 2.1
+  damagePower: 30
   priorityPower: 3
-  knockback: {x: 26, y: 13}
+  knockback: {x: 30, y: 26}
   GuardBreaking: 2
   chargable: 0
   delay: 0

@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Ground Slash
   animationName: CancerNeutralAAttack
-  damagePower: 0.5
+  damagePower: 5
   priorityPower: 2
-  knockback: {x: 10, y: 10}
-  GuardBreaking: 0.5
+  knockback: {x: 30, y: 60}
+  GuardBreaking: 1
   chargable: 0
   delay: 0
   recharge: 0.5

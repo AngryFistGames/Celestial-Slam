@@ -12,9 +12,9 @@ public class waveToPillar : MonoBehaviour
     {
       if (!collision.CompareTag(GetComponentInParent<PlayerTracker>().targetTag.gameObject.tag))
         {
-            if ((collision.gameObject.tag == "Player" && (!collision.gameObject.GetComponent<PlayerControl>().dodging) && (collision.gameObject.name != characterName + GetComponentInParent<PlayerTracker>().playerNumber)))
+            if ((collision.gameObject.tag == "Player" && (!collision.gameObject.GetComponent<PlayerScript>().dodging) && (collision.gameObject.name != characterName + GetComponentInParent<PlayerTracker>().playerNumber)))
             {
-                if (collision.GetComponent<PlayerControl>().isBlocking == false)
+                if (collision.GetComponent<PlayerScript>().isBlocking == false)
                 {
                     switch (GetComponentInParent<PlayerTracker>().targetTag.gameObject.tag)
                     {

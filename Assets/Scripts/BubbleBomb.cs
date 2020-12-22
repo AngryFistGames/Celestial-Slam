@@ -28,7 +28,7 @@ public class BubbleBomb : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("HitBox"))
         {
-            if (GetComponent<Projectiles>().priorityPower <= collision.gameObject.GetComponent<Projectiles>().priorityPower)
+            if ((gameObject.GetComponent<Projectile>().ammo.priorityPower <= collision.gameObject.GetComponent<Projectile>().ammo.priorityPower) && collision.gameObject != this.gameObject )
             {
                 anim.SetTrigger("done");
             }

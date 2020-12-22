@@ -15,20 +15,22 @@ public class AttackController : MonoBehaviour
     public float gripLoss;
     public float GuardBreaking;
     public int charge = 1;
-
+    public bool flinchless = false;
+    public int owner;
     public void OnEnable()
     {
         if (!gameObject.GetComponent<Projectile>())
         {
-            technique = GetComponentInParent<PlayerControl>().attack;
+            technique = GetComponentInParent<PlayerScript>().attack;
             if (technique != null)
             {
                 isAttacking = true;
                 gripLoss = technique.gripLoss * charge;
-                priorityPower = technique.priorityPower * GetComponentInParent<PlayerControl>().attackPower;
-                damagePower = technique.damagePower * GetComponentInParent<PlayerControl>().attackPower * charge;
+                priorityPower = technique.priorityPower * GetComponentInParent<PlayerScript>().attackPower;
+                damagePower = technique.damagePower * GetComponentInParent<PlayerScript>().attackPower * charge;
                 knockback = technique.knockback * charge;
                 GuardBreaking = technique.GuardBreaking * charge;
+                flinchless = technique.flinchless;
             }
         }
         if (gameObject.GetComponent<Projectile>())
@@ -43,8 +45,10 @@ public class AttackController : MonoBehaviour
                 damagePower = ammo.damagePower * charge;
                 knockback = ammo.knockback;
                 GuardBreaking = ammo.GuardBreaking;
+                flinchless = ammo.flinchless;
             }
         }
+       
     }
 
     public void OnDisable()

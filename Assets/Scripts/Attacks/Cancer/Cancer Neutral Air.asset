@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Air Bubble Barrier
   animationName: CancerNeutralAir
-  damagePower: 2
+  damagePower: 6
   priorityPower: 2
   knockback: {x: 13, y: 9}
-  GuardBreaking: 0.2
+  GuardBreaking: 2
   chargable: 0
   delay: 0
+  flinchless: 1
   recharge: 0.3
-  gripLoss: 0.2
+  gripLoss: 1
   projectile: {fileID: 0}

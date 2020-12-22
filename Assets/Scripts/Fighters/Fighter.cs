@@ -12,5 +12,6 @@ public class Fighter : ScriptableObject
     public float weight;
     public float BaseAttack;
     public float BaseDefense;
+    public int jumpCount;
     public BasicAttack[] techniques;
 }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour
 {
-    public PlayerControl player;
+    public PlayerScript player;
     public float GuardMeter;
     public List<GameObject> ShieldStars;
 
     // Start is called before the first frame update
     private void Awake()
     {
-        player = GetComponentInParent<PlayerControl>();
+        player = GetComponentInParent<PlayerScript>();
         foreach (Transform child in this.gameObject.transform)
         {
             ShieldStars.Add(child.gameObject);

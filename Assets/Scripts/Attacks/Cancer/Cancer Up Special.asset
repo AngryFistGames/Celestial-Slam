@@ -19,7 +19,8 @@ MonoBehaviour:
   knockback: {x: 0, y: 0}
   GuardBreaking: 0
   chargable: 0
-  delay: 0
+  delay: 1
+  flinchless: 0
   recharge: 0.5
   gripLoss: 0
   projectile: {fileID: 3923546738727630107, guid: 41dc77f4a76ebec40a3d18b77e331b0d,

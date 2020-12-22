@@ -15,4 +15,6 @@ public class Projectiles : ScriptableObject
     public bool doesRikochet;
     public Vector2 rikochetAngle;
     public Vector2 launchPoint;
+    public bool flinchless;
+    public string launcher;
 }

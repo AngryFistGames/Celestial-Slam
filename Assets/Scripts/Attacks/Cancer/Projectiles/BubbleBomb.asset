@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: BubbleBomb
   m_EditorClassIdentifier: 
   trajectory: {x: 100, y: 0}
-  damagePower: 20
+  damagePower: 25
   priorityPower: 5
-  knockback: {x: 15, y: 20}
-  GuardBreaking: 0.5
+  knockback: {x: 31, y: 20}
+  GuardBreaking: 2
   gripLoss: 4
   charge: 0
   doesRikochet: 1
   rikochetAngle: {x: 0, y: -90}
   launchPoint: {x: 1.45, y: 0}
+  flinchless: 0
+  launcher: Cancer

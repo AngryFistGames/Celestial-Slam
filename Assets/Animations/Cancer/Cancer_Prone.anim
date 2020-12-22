@@ -195,7 +195,7 @@ AnimationClip:
     script: {fileID: 0}
   - curve:
     - time: 0.31666666
-      value: {fileID: -4610035208151226281, guid: ac52076c0fd382c419998cd40d9ac991,
+      value: {fileID: 3117219942110471076, guid: 2547e2715a273474d8eec3d80b357fd2,
         type: 3}
     attribute: m_Sprite
     path: Cbody/CancerEyeStalks/CancerEye1
@@ -203,10 +203,10 @@ AnimationClip:
     script: {fileID: 0}
   - curve:
     - time: 0.31666666
-      value: {fileID: -4610035208151226281, guid: ac52076c0fd382c419998cd40d9ac991,
+      value: {fileID: 3117219942110471076, guid: 2547e2715a273474d8eec3d80b357fd2,
         type: 3}
     attribute: m_Sprite
-    path: Cbody/CancerEyeStalks/CancerEye1 (1)
+    path: Cbody/CancerEyeStalks2/CancerEye1 (1)
     classID: 212
     script: {fileID: 0}
   m_SampleRate: 60
@@ -266,7 +266,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     - serializedVersion: 2
-      path: 4101058213
+      path: 3234281501
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -295,8 +295,8 @@ AnimationClip:
       isPPtrCurve: 0
     pptrCurveMapping:
     - {fileID: -5720482290306027093, guid: a5309075f12b3204b9751cc3a77ba1c9, type: 3}
-    - {fileID: -4610035208151226281, guid: ac52076c0fd382c419998cd40d9ac991, type: 3}
-    - {fileID: -4610035208151226281, guid: ac52076c0fd382c419998cd40d9ac991, type: 3}
+    - {fileID: 3117219942110471076, guid: 2547e2715a273474d8eec3d80b357fd2, type: 3}
+    - {fileID: 3117219942110471076, guid: 2547e2715a273474d8eec3d80b357fd2, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

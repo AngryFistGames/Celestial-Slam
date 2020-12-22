@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Carapaslam
   animationName: CancerBackwardAir
-  damagePower: 17
+  damagePower: 37
   priorityPower: 4
-  knockback: {x: 10, y: 10}
-  GuardBreaking: 2.5
+  knockback: {x: 30, y: 0}
+  GuardBreaking: 3
   chargable: 0
   delay: 0
   recharge: 0.5

@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
     float timer = 0f;
     public float shotRange; //how long the projectile is active in the scene
     [SerializeField]
-    string characterName;
+    public string characterName;
     public Vector2 launchingPoint;
     public Rigidbody2D rb;
     [SerializeField]
@@ -27,6 +27,7 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         launchingPoint = ammo.launchPoint;
+        characterName = ammo.launcher;
     }
     void OnEnable()
     {
@@ -52,23 +53,23 @@ public class Projectile : MonoBehaviour
             {
                 case "Floor":
                     _direction = new Vector2(direction.x * Time.deltaTime * directionSpeed, direction.y * Time.deltaTime * directionSpeed);
-                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerScript>(false).gameObject.transform.rotation;
                     break;
                 case "Cieling":
                     _direction = new Vector2(-direction.x * Time.deltaTime * directionSpeed, -direction.y * Time.deltaTime * directionSpeed);
-                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerScript>(false).gameObject.transform.rotation;
                     break;
                 case "Left":
                     _direction = new Vector2(-direction.y * Time.deltaTime * directionSpeed, -direction.x * Time.deltaTime * directionSpeed);
-                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerScript>(false).gameObject.transform.rotation;
                     break;
                 case "Right":
                     _direction = new Vector2(direction.y * Time.deltaTime * directionSpeed, direction.x * Time.deltaTime * directionSpeed);
-                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerScript>(false).gameObject.transform.rotation;
                     break;
                 default:
                     _direction = direction * Time.deltaTime;
-                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerScript>(false).gameObject.transform.rotation;
                     break;
             }
         }
@@ -78,23 +79,23 @@ public class Projectile : MonoBehaviour
                 {
                     case "Floor":
                         _direction = new Vector2(-direction.x * Time.deltaTime * directionSpeed, direction.y * Time.deltaTime * directionSpeed);
-                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerScript>(false).gameObject.transform.rotation;
                     break;
                     case "Cieling":
                         _direction = new Vector2(direction.x * Time.deltaTime * directionSpeed, -direction.y * Time.deltaTime * directionSpeed);
-                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerScript>(false).gameObject.transform.rotation;
                     break;
                     case "Left":
                     _direction = new Vector2(direction.y * Time.deltaTime * directionSpeed, direction.x * Time.deltaTime * directionSpeed);
-                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerScript>(false).gameObject.transform.rotation;
                     break;
                     case "Right":
                     _direction = new Vector2(-direction.y * Time.deltaTime * directionSpeed, -direction.x * Time.deltaTime * directionSpeed);
-                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerScript>(false).gameObject.transform.rotation;
                     break;
                     default:
                     _direction = Vector2.up  * Time.deltaTime;
-                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerControl>(false).gameObject.transform.rotation;
+                    _rotation = GetComponentInParent<PlayerTracker>().gameObject.GetComponentInChildren<PlayerScript>(false).gameObject.transform.rotation;
                     break;
                 }
             }
@@ -135,7 +136,7 @@ public class Projectile : MonoBehaviour
                         anim.SetTrigger("done");
                     }
                 }
-        if (collision.gameObject.tag == "Player" && (!collision.gameObject.GetComponent<PlayerControl>().dodging) && (collision.gameObject.name != characterName + GetComponentInParent<PlayerTracker>().playerNumber))
+        if (collision.gameObject.CompareTag("Player") && (!collision.gameObject.GetComponent<PlayerScript>().dodging) && (collision.gameObject.name != characterName + GetComponentInParent<PlayerTracker>().playerNumber))
         {
             if (anim != null)
             {
