@@ -1,0 +1,668 @@
+fileFormatVersion: 2
+guid: 8f4c1986ab0b8d94d9c7e0955d858687
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8042457590456581922
+    second: CancerBody1_v02_0
+  - first:
+      213: -2842134403956905551
+    second: CancerBody1_v02_1
+  - first:
+      213: 8433055896503186799
+    second: CancerBody1_v02_2
+  - first:
+      213: -669509373524983262
+    second: CancerBody1_v02_3
+  - first:
+      213: 7724876606211517208
+    second: CancerBody1_v02_4
+  - first:
+      213: 1899254691189901760
+    second: CancerBody1_v02_5
+  - first:
+      213: -6573584081447292159
+    second: CancerBody1_v02_6
+  - first:
+      213: 173357624101262228
+    second: CancerBody1_v02_7
+  - first:
+      213: 4410569975716259816
+    second: CancerBody1_v02_8
+  - first:
+      213: -2556250773550301354
+    second: CancerBody1_v02_9
+  - first:
+      213: -8335710867916686666
+    second: CancerBody1_v02_10
+  - first:
+      213: 3662772172013979813
+    second: CancerBody1_v02_11
+  - first:
+      213: 4445855575926374443
+    second: CancerBody1_v02_12
+  - first:
+      213: 1724947782319654349
+    second: CancerBody1_v02_13
+  - first:
+      213: -3524033319052046906
+    second: CancerBody1_v02_14
+  - first:
+      213: 3075216940870768550
+    second: CancerBody1_v02_15
+  - first:
+      213: 6235077572418380628
+    second: CancerBody1_v02_16
+  - first:
+      213: 6658643675775981156
+    second: CancerBody1_v02_17
+  - first:
+      213: -3809231686625052774
+    second: CancerBody1_v02_18
+  - first:
+      213: 8025418306244574727
+    second: CancerBody1_v02_19
+  - first:
+      213: -8835253956527930316
+    second: CancerBody1_v02_20
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CancerBody1_v02_0
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 1613
+        width: 208
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed001b7ae63736090800000000000000
+      internalID: -8042457590456581922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_1
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 1614
+        width: 227
+        height: 210
+      alignment: 9
+      pivot: {x: 0.49999946, y: 0.13664086}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b96b3061d5be88d0800000000000000
+      internalID: -2842134403956905551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_2
+      rect:
+        serializedVersion: 2
+        x: 1412
+        y: 1667
+        width: 357
+        height: 168
+      alignment: 9
+      pivot: {x: 0.7362389, y: 0.45218912}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f65f51a58ab380570800000000000000
+      internalID: 8433055896503186799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_3
+      rect:
+        serializedVersion: 2
+        x: 1924
+        y: 1537
+        width: 207
+        height: 178
+      alignment: 9
+      pivot: {x: 0.20898025, y: 0.4999993}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 222cf31a5cc65b6f0800000000000000
+      internalID: -669509373524983262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_4
+      rect:
+        serializedVersion: 2
+        x: 1554
+        y: 1524
+        width: 337
+        height: 122
+      alignment: 9
+      pivot: {x: 0.6310883, y: 0.7633477}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81b66fe5856443b60800000000000000
+      internalID: 7724876606211517208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_5
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 630
+        width: 378
+        height: 842
+      alignment: 9
+      pivot: {x: 0.6274942, y: 0.032572042}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c94e5634128b5a10800000000000000
+      internalID: 1899254691189901760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_6
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 1362
+        width: 104
+        height: 147
+      alignment: 9
+      pivot: {x: 0.49999884, y: 0.09019668}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 103fb243b10f5c4a0800000000000000
+      internalID: -6573584081447292159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_7
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 1342
+        width: 92
+        height: 163
+      alignment: 9
+      pivot: {x: 0.5, y: 0.10578478}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49359a337d3e76200800000000000000
+      internalID: 173357624101262228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_8
+      rect:
+        serializedVersion: 2
+        x: 2082
+        y: 506
+        width: 316
+        height: 961
+      alignment: 9
+      pivot: {x: 0.09330962, y: 0.044483706}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e72293560e753d30800000000000000
+      internalID: 4410569975716259816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_9
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 1339
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65f77bd077f568cd0800000000000000
+      internalID: -2556250773550301354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_10
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 1272
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ba767f412b915c80800000000000000
+      internalID: -8335710867916686666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_11
+      rect:
+        serializedVersion: 2
+        x: 1781
+        y: 663
+        width: 274
+        height: 645
+      alignment: 9
+      pivot: {x: 0.8664288, y: 0.12018598}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a8441e52e7c4d230800000000000000
+      internalID: 3662772172013979813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_12
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 1266
+        width: 4
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2008c5571ad2bd30800000000000000
+      internalID: 4445855575926374443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_13
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 1025
+        width: 4
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc5c24d6ede30f710800000000000000
+      internalID: 1724947782319654349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_14
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 714
+        width: 297
+        height: 550
+      alignment: 9
+      pivot: {x: 0.20251362, y: 0.15680875}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cd03411e5e181fc0800000000000000
+      internalID: -3524033319052046906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_15
+      rect:
+        serializedVersion: 2
+        x: 1105
+        y: 403
+        width: 471
+        height: 522
+      alignment: 9
+      pivot: {x: 0.49147323, y: 0.06915768}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a79dd7b38d5daa20800000000000000
+      internalID: 3075216940870768550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_16
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 53
+        width: 163
+        height: 225
+      alignment: 9
+      pivot: {x: 0.5985542, y: 0.8748318}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 453a00b6402778650800000000000000
+      internalID: 6235077572418380628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_17
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 57
+        width: 183
+        height: 228
+      alignment: 9
+      pivot: {x: 0.32443488, y: 0.83467126}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4665784e421486c50800000000000000
+      internalID: 6658643675775981156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_18
+      rect:
+        serializedVersion: 2
+        x: 1696
+        y: 43
+        width: 150
+        height: 254
+      alignment: 9
+      pivot: {x: 0.5, y: 0.847848}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a973d8396f3e22bc0800000000000000
+      internalID: -3809231686625052774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_19
+      rect:
+        serializedVersion: 2
+        x: 1859
+        y: 52
+        width: 133
+        height: 237
+      alignment: 9
+      pivot: {x: 0.3188247, y: 0.8389085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70eff95dd63006f60800000000000000
+      internalID: 8025418306244574727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CancerBody1_v02_20
+      rect:
+        serializedVersion: 2
+        x: 1422
+        y: 50
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 434c9c4765fd26580800000000000000
+      internalID: -8835253956527930316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: d889820a8d762084983fcfcafdb2e4eb
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

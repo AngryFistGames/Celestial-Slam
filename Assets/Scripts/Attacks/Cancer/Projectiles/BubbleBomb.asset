@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939ff8631510f5c4e87223cd420c67db, type: 3}
   m_Name: BubbleBomb
   m_EditorClassIdentifier: 
-  trajectory: {x: 100, y: 0}
+  trajectory: {x: 50, y: 0}
   damagePower: 25
   priorityPower: 5
   knockback: {x: 31, y: 20}

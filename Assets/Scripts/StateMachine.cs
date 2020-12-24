@@ -90,10 +90,18 @@ public class Prone : IState
     public void OnEnter()
     {
         anim.SetBool("knocked out", true);
+        _player.proneTimer = 0;
     }
     public void Tick()
     {
-        _player.canInput = false;
+        if (_player.proneTimer <= 1f)
+        {
+            _player.canInput = false;
+        }
+        else
+        {
+            _player.canInput = true;
+        }
         _player.canMove = false; 
         if (_player.grounded)
         {
@@ -103,12 +111,20 @@ public class Prone : IState
         {
             _player.OffGround();
         }
+        _player.proneTimer += Time.deltaTime;
         anim.SetBool("grounded", _player.grounded);
         _player.vulnerable = true;
+        if (((_player.canInput && (_player.Horiz != 0 || _player.Vert != 0))) || _player.proneTimer > 3f)
+        {
+            _player.doneStun = true;
+        }
 
     }
-    public void OnExit() { }
-
+    public void OnExit() {
+        _player.doneStun = false;
+        _player.slam = false;
+        anim.SetBool("knocked out", false);
+            }
 }
 public class Blocking : IState
 {
@@ -296,6 +312,7 @@ public class GroundAttack : IState
         anim.SetBool("damaged", false);
         _player.OnGround();
         _player.canMove = false;
+        _player.action = true;
     }
     public void Tick()
     {
@@ -538,7 +555,7 @@ public class Jump : IState
 
         anim.SetBool("grounded", false);
         anim.SetBool("damaged", false);
-
+        
     }
     public void Tick()
     {
@@ -547,7 +564,7 @@ public class Jump : IState
         {
             case "Floor":
 
-                mover = new Vector2(_player.Horiz * _player.moveSpeed * Time.deltaTime, 0);
+                mover = new Vector2(_player.Horiz * _player.moveSpeed, 0);
 
 
                 if ((_player.Horiz > 0))
@@ -568,7 +585,7 @@ public class Jump : IState
                 break;
             case "Cieling":
 
-                mover = new Vector2(_player.Horiz * _player.moveSpeed * Time.deltaTime, 0);
+                mover = new Vector2(_player.Horiz * _player.moveSpeed, 0);
 
                 if ((_player.Horiz < 0))
                 {
@@ -588,7 +605,7 @@ public class Jump : IState
                 break;
             case "Left":
 
-                mover = new Vector2(0, _player.Vert * _player.moveSpeed * Time.deltaTime);
+                mover = new Vector2(0, _player.Vert * _player.moveSpeed);
 
                 if ((_player.Vert < 0))
                 {
@@ -609,7 +626,7 @@ public class Jump : IState
                 break;
             case "Right":
 
-                mover = new Vector2(0, _player.Vert * _player.moveSpeed * Time.deltaTime);
+                mover = new Vector2(0, _player.Vert * _player.moveSpeed);
 
                 if ((_player.Vert > 0))
                 {
@@ -630,7 +647,7 @@ public class Jump : IState
                 }
                 break;
             default:
-                mover = new Vector2(_player.Horiz * _player.moveSpeed * Time.deltaTime, 0);
+                mover = new Vector2(_player.Horiz * _player.moveSpeed, 0);
                 if ((_player.Horiz > 0))
                 {
                     _player.speed = Mathf.Abs(_player.Horiz);
@@ -653,8 +670,35 @@ public class Jump : IState
                 break;
         }
 
-        _player.rigidBody.AddForce(mover * 25);
-
+        _player.rigidBody.AddForce(mover * 25 * Time.deltaTime);
+        switch (_player.gameObject.GetComponent<GravBody>().attractor.gameObject.tag)
+        {
+            case "Floor":
+                _player.localHoriz = _player.Horiz;
+                _player.localVert = _player.Vert;
+                break;
+            case "Cieling":
+                _player.localHoriz = _player.Horiz;
+                _player.localVert = -_player.Vert;
+                break;
+            case "Left":
+               
+                _player.localHoriz = _player.Vert;
+                _player.localVert = _player.Horiz;
+                break;
+            case "Right":
+                
+                _player.localHoriz = _player.Vert;
+                _player.localVert = -_player.Horiz;
+                break;
+            default:
+                
+                _player.localHoriz = _player.Horiz;
+                _player.localVert = _player.Vert;
+                break;
+        }
+        if ((_player.jumpTimer > Time.time) && (_player.maxJumpCount > _player.jumpCount) && _player.canMove && !_player.action && _player.actionCooldown > 0)
+        { _player.Jump(); }
     }
     public void OnExit()
     {
@@ -730,7 +774,8 @@ public class Idle : IState
                     _player.localVert = _player.Vert;
                     break;
             }
-      
+        if ((_player.jumpTimer > Time.time) && (_player.maxJumpCount > _player.jumpCount) && _player.canMove && !_player.action && _player.actionCooldown > 0)
+        { _player.Jump(); }
     }
     public void OnExit()
     {
@@ -769,7 +814,7 @@ public class Walk : IState
         {
             case "Floor":
 
-                mover = new Vector2(_player.Horiz * _player.moveSpeed * Time.deltaTime, 0);
+                mover = new Vector2(_player.Horiz * _player.moveSpeed, 0);
 
 
                 if ((_player.Horiz > 0) && (!_player.action))
@@ -786,7 +831,7 @@ public class Walk : IState
                 break;
             case "Cieling":
 
-                mover = new Vector2(_player.Horiz * _player.moveSpeed * Time.deltaTime, 0);
+                mover = new Vector2(_player.Horiz * _player.moveSpeed, 0);
 
                 if ((_player.Horiz < 0) && (!_player.action))
                 {
@@ -802,7 +847,7 @@ public class Walk : IState
                 break;
             case "Left":
 
-                mover = new Vector2(0, _player.Vert * _player.moveSpeed * Time.deltaTime);
+                mover = new Vector2(0, _player.Vert * _player.moveSpeed);
 
                 if ((_player.Vert < 0) && (!_player.action))
                 {
@@ -817,7 +862,7 @@ public class Walk : IState
                 break;
             case "Right":
 
-                mover = new Vector2(0, _player.Vert * _player.moveSpeed * Time.deltaTime);
+                mover = new Vector2(0, _player.Vert * _player.moveSpeed);
 
                 if ((_player.Vert > 0) && (!_player.action))
                 {
@@ -833,7 +878,7 @@ public class Walk : IState
                 
                 break;
             default:
-                mover = new Vector2(_player.Horiz * _player.moveSpeed * Time.deltaTime, 0);
+                mover = new Vector2(_player.Horiz * _player.moveSpeed, 0);
                 if ((_player.Horiz > 0) && (!_player.action))
                 {
                     _player.speed = Mathf.Abs(_player.Horiz);
@@ -847,7 +892,7 @@ public class Walk : IState
                 break;
         }
 
-        _player.rigidBody.AddForce(mover * 100);
+        _player.rigidBody.AddForce(mover * 100 * Time.deltaTime);
         switch (_player.gameObject.GetComponent<GravBody>().attractor.gameObject.tag)
             {
                 case "Floor":
@@ -891,7 +936,8 @@ public class Walk : IState
                     _player.localVert = _player.Vert;
                     break;
             }
-        
+        if ((_player.jumpTimer > Time.time) && (_player.maxJumpCount > _player.jumpCount) && _player.canMove && !_player.action && _player.actionCooldown > 0)
+        { _player.Jump(); }
     }
     public void OnExit()
     {
@@ -930,7 +976,7 @@ public class Run : IState
         {
             case "Floor":
 
-                mover = new Vector2(_player.Horiz * _player.moveSpeed * Time.deltaTime, 0);
+                mover = new Vector2(_player.Horiz * _player.moveSpeed, 0);
 
 
                 if ((_player.Horiz > 0) && (!_player.action))
@@ -947,7 +993,7 @@ public class Run : IState
                 break;
             case "Cieling":
 
-                mover = new Vector2(_player.Horiz * _player.moveSpeed * Time.deltaTime, 0);
+                mover = new Vector2(_player.Horiz * _player.moveSpeed, 0);
 
                 if ((_player.Horiz < 0) && (!_player.action))
                 {
@@ -963,7 +1009,7 @@ public class Run : IState
                 break;
             case "Left":
 
-                mover = new Vector2(0, _player.Vert * _player.moveSpeed * Time.deltaTime);
+                mover = new Vector2(0, _player.Vert * _player.moveSpeed);
 
                 if ((_player.Vert < 0) && (!_player.action))
                 {
@@ -978,7 +1024,7 @@ public class Run : IState
                 break;
             case "Right":
 
-                mover = new Vector2(0, _player.Vert * _player.moveSpeed * Time.deltaTime);
+                mover = new Vector2(0, _player.Vert * _player.moveSpeed);
 
                 if ((_player.Vert > 0) && (!_player.action))
                 {
@@ -994,7 +1040,7 @@ public class Run : IState
 
                 break;
             default:
-                mover = new Vector2(_player.Horiz * _player.moveSpeed * Time.deltaTime, 0);
+                mover = new Vector2(_player.Horiz * _player.moveSpeed, 0);
                 if ((_player.Horiz > 0) && (!_player.action))
                 {
                     _player.speed = Mathf.Abs(_player.Horiz);
@@ -1008,7 +1054,7 @@ public class Run : IState
                 break;
         }
 
-        _player.rigidBody.AddForce(mover * 100);
+        _player.rigidBody.AddForce(mover * 100 * Time.deltaTime);
         switch (_player.gameObject.GetComponent<GravBody>().attractor.gameObject.tag)
         {
             case "Floor":
@@ -1052,7 +1098,8 @@ public class Run : IState
                 _player.localVert = _player.Vert;
                 break;
         }
-        _player.rigidBody.AddForce(mover * 100);
+        if ((_player.jumpTimer > Time.time) && (_player.maxJumpCount > _player.jumpCount) && _player.canMove && !_player.action && _player.actionCooldown > 0)
+        { _player.Jump(); }
     }
     public void OnExit()
     {

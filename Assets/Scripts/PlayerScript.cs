@@ -31,6 +31,7 @@ public class PlayerScript : MonoBehaviour
     public Transform GroundCheck;
     public float checkRadius = 0.2f;
     public float leapLimit= 3;
+    public float proneTimer;
 
     [Header("Controls")]
     public BasicAttack attack;
@@ -57,6 +58,7 @@ public class PlayerScript : MonoBehaviour
     public bool canInput;
     public bool isMoving;
     public int jumpCount = 0;
+    public bool jumpLong;
     public float leapCooldown = 3f;
     public bool isDamaged = false;
     public bool cancelled = false;
@@ -70,7 +72,7 @@ public class PlayerScript : MonoBehaviour
     public float localVert;
     public bool stunned;
     public bool doneStun;
-
+    public bool slam;
     [Header("Stats")]
     public float HP;
     public float attackPower = 1;
@@ -116,7 +118,7 @@ public class PlayerScript : MonoBehaviour
         var blocking = new Blocking(this);
         var dodge = new AirDodge(this);
         var leap = new Leaping(this);
-
+        var prone = new Prone(this);
         At(dodge, idle, landed());
         At(flinch, idle, stunless());
         At(run, idle, stop());
@@ -150,15 +152,16 @@ public class PlayerScript : MonoBehaviour
         At(leapprep, leap, gravityChange());
         At(blocking, idle, unguard());
         At(leap, idle, landed());
-
+        At(prone, idle, stunless());
         statemachine.AddAnyTransition(leapprep, () => LeapPrep && leapCooldown <= 0);
         statemachine.AddAnyTransition(stun, () => stunned);
         statemachine.AddAnyTransition(flinch, () => isDamaged);
+        statemachine.AddAnyTransition(prone, () => slam);
         Func<bool> stunless() => () => doneStun == true; 
         Func<bool> walking() => () => speed > 0.3 && speed < 0.7;
         Func<bool> running() => () => speed > 0.7;
         Func<bool> stop() => () => speed < 0.3;
-        Func<bool> jumping() => () => jumpTimer > jumpDelay && maxJumpCount > jumpCount && actionCooldown > 0;
+        Func<bool> jumping() => () => (jumpTimer > Time.time) && (maxJumpCount > jumpCount) && !action && actionCooldown > 0;
         Func<bool> offensive() => () => attack != null && actionCooldown > 0;
         Func<bool> unoffensive() => () => attack == null; 
         Func<bool> landed() => () => grounded;
@@ -364,10 +367,10 @@ public class PlayerScript : MonoBehaviour
     public virtual void FixedUpdate()
     {
 
-       if  (jumpTimer > jumpDelay && maxJumpCount > jumpCount && actionCooldown > 0)            
-            {
-                Jump();
-            }
+       //if  ((jumpTimer > Time.time) && (maxJumpCount > jumpCount) && canMove && !action && actionCooldown > 0)            
+         //   {
+           //     Jump();
+            // }
         
        
         if (damage > HP)
@@ -459,7 +462,8 @@ public class PlayerScript : MonoBehaviour
     {
         Horiz = player.GetAxis("Horizontal");
         Vert = player.GetAxis("Vertical");
-        jump = player.GetButton("Jump");
+        jump = player.GetButtonDown("Jump");
+        jumpLong = player.GetButton("Jump");
         isBlocking = player.GetButton("Block");
         BasicTech = player.GetButtonDown("Attack");
         SpecialTech = player.GetButtonDown("Special");
@@ -587,7 +591,7 @@ public class PlayerScript : MonoBehaviour
                     rigidBody.velocity += Vector2.up * GetComponent<GravBody>().gravity * Time.deltaTime;
                 }
                 else
-                if (rigidBody.velocity.y > 0 && !jump)
+                if (rigidBody.velocity.y > 0 && !jumpLong)
                 {
                     rigidBody.velocity += Vector2.up * GetComponent<GravBody>().gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
                 }
@@ -598,7 +602,7 @@ public class PlayerScript : MonoBehaviour
                     rigidBody.velocity += Vector2.down * GetComponent<GravBody>().gravity * Time.deltaTime;
                 }
                 else
-                if (rigidBody.velocity.y < 0 && !jump)
+                if (rigidBody.velocity.y < 0 && !jumpLong)
                 {
                     rigidBody.velocity += Vector2.down * GetComponent<GravBody>().gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
                 }
@@ -609,7 +613,7 @@ public class PlayerScript : MonoBehaviour
                     rigidBody.velocity += Vector2.right * GetComponent<GravBody>().gravity * Time.deltaTime;
                 }
                 else
-                if (rigidBody.velocity.x > 0 && !jump)
+                if (rigidBody.velocity.x > 0 && !jumpLong)
                 {
                     rigidBody.velocity += Vector2.right * GetComponent<GravBody>().gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
                 }
@@ -620,7 +624,7 @@ public class PlayerScript : MonoBehaviour
                     rigidBody.velocity += Vector2.left * GetComponent<GravBody>().gravity * Time.deltaTime;
                 }
                 else
-                if (rigidBody.velocity.x < 0 && !jump)
+                if (rigidBody.velocity.x < 0 && !jumpLong)
                 {
                     rigidBody.velocity += Vector2.left * GetComponent<GravBody>().gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
                 }
@@ -658,23 +662,23 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
-    void Jump()
+    public void Jump()
     {
        jumpCount += 1;
 
         switch (GetComponent<GravBody>().attractor.gameObject.tag)
         {
             case "Floor":
-                rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, jumpHeight * 100 *Time.deltaTime);
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, jumpHeight * Time.deltaTime);
                 break;
             case "Cieling":
-                rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, -jumpHeight * 100* Time.deltaTime);
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, -jumpHeight * Time.deltaTime);
                 break;
             case "Left":
-                rigidBody.velocity = new Vector2(jumpHeight * 100 * Time.deltaTime, rigidBody.velocity.y * Time.deltaTime);
+                rigidBody.velocity = new Vector2(jumpHeight  * Time.deltaTime, rigidBody.velocity.y * Time.deltaTime);
                 break;
             case "Right":
-                rigidBody.velocity = new Vector2(-jumpHeight * 100 * Time.deltaTime, rigidBody.velocity.y * Time.deltaTime);
+                rigidBody.velocity = new Vector2(-jumpHeight  * Time.deltaTime, rigidBody.velocity.y * Time.deltaTime);
                 break;
             default:
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpHeight);
@@ -1003,6 +1007,8 @@ public class PlayerScript : MonoBehaviour
     }
     public void Launch(Vector2 dir)
     {
+        
+        slam = true;
         canInput = false;
         canMove = false;
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, dir, 10000, floor);
@@ -1010,6 +1016,11 @@ public class PlayerScript : MonoBehaviour
         {
             GravAttractor wall = hitInfo.transform.GetComponent<GravAttractor>();
             storedTarget = wall; ;
+            if (((Target.tag == "Floor") && (storedTarget.tag == "Cieling")) || ((Target.tag == "Cieling") && (storedTarget.tag == "Floor")) || ((Target.tag == "Left") && (storedTarget.tag == "Right")) || ((Target.tag == "Right") && (storedTarget.tag == "Left")))
+            {
+                faceRight = !faceRight;
+
+            }
             Target = storedTarget;
             Vector2 launchTarget = hitInfo.point;
             transform.position = launchTarget;
