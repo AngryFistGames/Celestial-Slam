@@ -669,16 +669,16 @@ public class PlayerScript : MonoBehaviour
         switch (GetComponent<GravBody>().attractor.gameObject.tag)
         {
             case "Floor":
-                rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, jumpHeight * Time.deltaTime);
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, jumpHeight* 10 * Time.deltaTime);
                 break;
             case "Cieling":
-                rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, -jumpHeight * Time.deltaTime);
+                rigidBody.velocity = new Vector2(rigidBody.velocity.x * Time.deltaTime, -jumpHeight * 10 *Time.deltaTime);
                 break;
             case "Left":
-                rigidBody.velocity = new Vector2(jumpHeight  * Time.deltaTime, rigidBody.velocity.y * Time.deltaTime);
+                rigidBody.velocity = new Vector2(jumpHeight * 10 * Time.deltaTime, rigidBody.velocity.y * Time.deltaTime);
                 break;
             case "Right":
-                rigidBody.velocity = new Vector2(-jumpHeight  * Time.deltaTime, rigidBody.velocity.y * Time.deltaTime);
+                rigidBody.velocity = new Vector2(-jumpHeight * 10 * Time.deltaTime, rigidBody.velocity.y * Time.deltaTime);
                 break;
             default:
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpHeight);
@@ -1034,5 +1034,9 @@ public class PlayerScript : MonoBehaviour
             }
             gripLoss = 1f;
         }
+    }
+    public void Die()
+    {
+        gameObject.SetActive(false);
     }
 }

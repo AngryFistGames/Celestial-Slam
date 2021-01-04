@@ -781,6 +781,28 @@ public class Idle : IState
     {
     }
 }
+public class Dead : IState
+{
+    readonly PlayerScript _player;
+    Animator anim;
+
+    public Dead(PlayerScript ps)
+    {
+        _player = ps;
+        anim = ps.anim;
+    }
+    public void OnEnter()
+    {
+        anim.SetTrigger("Dead");
+    }
+    public void Tick()
+    {
+
+    }
+    public void OnExit()
+    {
+    }
+}
 public class Walk : IState
 {
     readonly PlayerScript _player;

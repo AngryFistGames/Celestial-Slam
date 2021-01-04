@@ -65,4 +65,5 @@ public class PlayerTracker : MonoBehaviour
             GetComponentInChildren<scr_Flip>().rend.flipX = !GetComponentInChildren<scr_Flip>().rend.flipX;
         }
     }
+  
 }
