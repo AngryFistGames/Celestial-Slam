@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Claw Crush
   animationName: CancerForwardBAttack
-  damagePower: 100
+  damagePower: 120
   priorityPower: 6
-  knockback: {x: 35, y: 35}
+  knockback: {x: 30, y: 35}
   GuardBreaking: 100
   chargable: 0
   delay: 0
+  flinchless: 0
   recharge: 0.8
   gripLoss: 19
   projectile: {fileID: 0}

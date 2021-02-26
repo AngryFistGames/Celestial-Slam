@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FoamBubble
   m_EditorClassIdentifier: 
   trajectory: {x: 0, y: 0}
-  damagePower: 1
+  damagePower: 2
   priorityPower: 1
   knockback: {x: 8, y: 0}
   GuardBreaking: 1
@@ -22,3 +22,5 @@ MonoBehaviour:
   doesRikochet: 0
   rikochetAngle: {x: 0, y: 0}
   launchPoint: {x: 0, y: 0}
+  flinchless: 0
+  launcher: 

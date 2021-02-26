@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Point Up
   animationName: CancerUpAAttack
-  damagePower: 22
+  damagePower: 33
   priorityPower: 3
   knockback: {x: 1, y: 20}
   GuardBreaking: 17
   chargable: 0
   delay: 0
+  flinchless: 0
   recharge: 0.5
   gripLoss: 26
   projectile: {fileID: 0}

@@ -165,17 +165,23 @@ public class AirDodge : IState
     }
     public void OnEnter()
     {
+        _player.dodgeTimer = 0;
         anim.SetBool("grounded", false);
         anim.SetTrigger("Dodge");
         anim.SetBool("damaged", false);
     }
     public void Tick()
     {
+        _player.dodgeTimer += Time.deltaTime;
         _player.vulnerable = false;
-        _player.Dodge();
+        
     }
     public void OnExit()
     {
+        _player.isBlocking = false;
+        _player.actionCooldown = -2f;
+        _player.dodgeTimer = 0;
+        _player.Dodge();
     }
 }
 public class AirAttack : IState
@@ -559,7 +565,8 @@ public class Jump : IState
     }
     public void Tick()
     {
-        _player.OffGround(); Vector2 mover;
+        _player.OffGround(); 
+        Vector2 mover;
         switch (_player.gameObject.GetComponent<GravBody>().attractor.gameObject.tag)
         {
             case "Floor":
@@ -670,7 +677,7 @@ public class Jump : IState
                 break;
         }
 
-        _player.rigidBody.AddForce(mover * 25 * Time.deltaTime);
+        _player.rigidBody.AddForce(mover * 50 * Time.deltaTime);
         switch (_player.gameObject.GetComponent<GravBody>().attractor.gameObject.tag)
         {
             case "Floor":
@@ -702,6 +709,7 @@ public class Jump : IState
     }
     public void OnExit()
     {
+        _player.actionCooldown = -0.8f;
     }
 }
 public class Idle : IState

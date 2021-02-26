@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Scissor Stab
   animationName: CancerUpAir
-  damagePower: 37
+  damagePower: 52
   priorityPower: 4
   knockback: {x: 28, y: 21}
   GuardBreaking: 4
   chargable: 0
   delay: 0
+  flinchless: 0
   recharge: 0.7
   gripLoss: 9
   projectile: {fileID: 0}

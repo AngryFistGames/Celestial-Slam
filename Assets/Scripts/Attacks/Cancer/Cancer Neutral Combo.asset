@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Slash Flurry
   animationName: CancerNeutralAAttack 1
-  damagePower: 10
+  damagePower: 15
   priorityPower: 2
   knockback: {x: 10, y: 30}
   GuardBreaking: 0.25
   chargable: 0
   delay: 0
+  flinchless: 0
   recharge: 0.2
   gripLoss: 0.1
   projectile: {fileID: 0}

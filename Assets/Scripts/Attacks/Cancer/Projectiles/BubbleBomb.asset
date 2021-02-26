@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BubbleBomb
   m_EditorClassIdentifier: 
   trajectory: {x: 50, y: 0}
-  damagePower: 25
+  damagePower: 30
   priorityPower: 5
   knockback: {x: 31, y: 20}
   GuardBreaking: 2

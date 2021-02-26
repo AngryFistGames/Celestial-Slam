@@ -14,12 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Double Pincer
   animationName: CancerForwardAAttack
-  damagePower: 10
+  damagePower: 30
   priorityPower: 4
   knockback: {x: 32, y: 60}
   GuardBreaking: 1
   chargable: 0
   delay: 0
+  flinchless: 0
   recharge: 0.5
   gripLoss: 0.5
   projectile: {fileID: 0}

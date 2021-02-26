@@ -7,6 +7,7 @@ using Rewired;
 public class PlayerScript : MonoBehaviour
 {
     [Header("Components")]
+    public GameObject fightTracker;
     public StateMachine statemachine;
     public Animator anim;
     protected Player player;
@@ -41,6 +42,7 @@ public class PlayerScript : MonoBehaviour
     public bool faceRight = true;
     public float Horiz;
     public float Vert;
+    public bool Dodger;
     public bool BasicTech;
     public bool SpecialTech;
     public bool SpecialTechRelease;
@@ -88,8 +90,12 @@ public class PlayerScript : MonoBehaviour
     public float maxGrip;
     public float gripLoss;
     public bool vulnerable;
+    public float dodgeTimer;
+    public float dodgeTime = .001f;
     protected void Awake()
     {
+        fightTracker = GameObject.FindGameObjectWithTag("GameController");
+        fightTracker.GetComponent<FightHandler>().activeFighters++;
         anim = GetComponent<Animator>();
         Shaker = GameObject.FindGameObjectWithTag("Shake");
         maxGrip = fighter.weight;
@@ -119,6 +125,7 @@ public class PlayerScript : MonoBehaviour
         var dodge = new AirDodge(this);
         var leap = new Leaping(this);
         var prone = new Prone(this);
+        At(dodge, jump, dodged());
         At(dodge, idle, landed());
         At(flinch, idle, stunless());
         At(run, idle, stop());
@@ -143,7 +150,7 @@ public class PlayerScript : MonoBehaviour
         At(airattack, idle, landed());
         At(jump, airattack, offensive());
         At(jump, idle, landed());
-        At(jump, dodge, guard());
+        At(jump, dodge, dodgeHit());
         At(blocking, stun, pierce());
         At(idle, blocking, guard());
         At(walk, blocking, guard());
@@ -157,6 +164,8 @@ public class PlayerScript : MonoBehaviour
         statemachine.AddAnyTransition(stun, () => stunned);
         statemachine.AddAnyTransition(flinch, () => isDamaged);
         statemachine.AddAnyTransition(prone, () => slam);
+        Func<bool> dodgeHit() => () => Dodger && !grounded && actionCooldown > 0; 
+        Func<bool> dodged() => () => dodgeTimer > dodgeTime;
         Func<bool> stunless() => () => doneStun == true; 
         Func<bool> walking() => () => speed > 0.3 && speed < 0.7;
         Func<bool> running() => () => speed > 0.7;
@@ -183,44 +192,45 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-
-        GetComponent<GravBody>().attractor = Target;
-        grounded = Physics2D.OverlapCircle(GroundCheck.position, checkRadius, floor);
-        if (isPlayer)
+        if (Time.timeScale > 0)
         {
-            GetPlayerInput();
-        }
-        else
-        {
-            return;
-        }
-        speed = Mathf.Abs(localHoriz);
-        if ((BasicTech && actionCooldown > 0) && grounded)
-        {
-            if (localHoriz <= 0.3 && localHoriz >= -0.3 && localVert == 0)
+            GetComponent<GravBody>().attractor = Target;
+            grounded = Physics2D.OverlapCircle(GroundCheck.position, checkRadius, floor);
+            if (isPlayer)
             {
-                if (currentCombo < 1)
+                GetPlayerInput();
+            }
+            else
+            {
+                return;
+            }
+            speed = Mathf.Abs(localHoriz);
+            if ((BasicTech && actionCooldown > 0) && grounded)
+            {
+                if (localHoriz <= 0.3 && localHoriz >= -0.3 && localVert == 0)
                 {
-                    Attack(0);
+                    if (currentCombo < 1)
+                    {
+                        Attack(0);
+                    }
+                    else
+                    {
+                        Attack(1);
+                    }
                 }
-                else
+                if (localHoriz > 0.75 || localHoriz < -0.75)
                 {
-                    Attack(1);
+                    Attack(2);
+                }
+                if (localVert < -0.75)
+                {
+                    Attack(3);
+                }
+                if (localVert > 0.75)
+                {
+                    Attack(4);
                 }
             }
-            if (localHoriz > 0.75 || localHoriz < -0.75)
-            {
-                Attack(2);
-            }
-            if (localVert < -0.75)
-            {
-                Attack(3);
-            }
-            if (localVert > 0.75)
-            {
-                Attack(4);
-            }
-        }
             if ((BasicTech && actionCooldown > 0) && !grounded)
             {
 
@@ -266,7 +276,7 @@ public class PlayerScript : MonoBehaviour
 
                 }
             }
-      
+
             if ((SpecialTech && actionCooldown > 0) && grounded)
             {
                 if (localHoriz <= 0.3 && localHoriz >= -0.3 && localVert == 0)
@@ -294,73 +304,77 @@ public class PlayerScript : MonoBehaviour
                 }
 
             }
-       
-        if (SpecialTechRelease)
-        {
-            if (storedProjectile != null)
+
+            if (SpecialTechRelease)
             {
-                anim.SetTrigger("unleashed");
-                if (attackCharge >= 1)
+                if (storedProjectile != null)
                 {
-
-                    if (faceRight)
+                    anim.SetTrigger("unleashed");
+                    if (attackCharge >= 1)
                     {
-                        switch (Target.gameObject.tag)
+
+                        if (faceRight)
                         {
-                            case "Floor":
-                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                break;
-                            case "Cieling":
-                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                break;
-                            case "Right":
-                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                break;
-                            case "Left":
-                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                break;
+                            switch (Target.gameObject.tag)
+                            {
+                                case "Floor":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                                case "Cieling":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                                case "Right":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                                case "Left":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                            }
                         }
-                    }
-                    if (!faceRight)
-                    {
-                        switch (Target.gameObject.tag)
+                        if (!faceRight)
                         {
-                            case "Floor":
-                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                break;
-                            case "Cieling":
-                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                break;
-                            case "Right":
-                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                break;
-                            case "Left":
-                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                break;
+                            switch (Target.gameObject.tag)
+                            {
+                                case "Floor":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                                case "Cieling":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                                case "Right":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                                case "Left":
+                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                    break;
+                            }
                         }
+
+                        currentCombo++;
+
+                        actionCooldown = -attack.recharge;
                     }
 
-                    currentCombo++;
-
-                    actionCooldown = -attack.recharge;
                 }
 
             }
+            if (fightTracker.GetComponent<FightHandler>().fightStarted)
+            {
+                actionCooldown += Time.deltaTime;
 
+                if (Time.time - lastComboTime >= maxComboDelay)
+                {
+                    currentCombo = 0;
+                }
+                if (jump)
+                {
+                    jumpTimer = Time.time + jumpDelay;
+                }
+                sTarget = Target.gameObject.tag;
+
+                statemachine.Tick();
+            }
         }
-
-            actionCooldown += Time.deltaTime;
-
-            if (Time.time - lastComboTime >= maxComboDelay)
-            {
-                currentCombo = 0;
-            }
-            if (jump)
-            {
-                jumpTimer = Time.time + jumpDelay;
-            }
-            sTarget = Target.gameObject.tag;
-            statemachine.Tick();
         }
     
     void At(IState to, IState from, Func<bool> condition) => statemachine.AddTransition(to, from, condition);
@@ -465,6 +479,7 @@ public class PlayerScript : MonoBehaviour
         jump = player.GetButtonDown("Jump");
         jumpLong = player.GetButton("Jump");
         isBlocking = player.GetButton("Block");
+        Dodger = player.GetButtonDown("Block");
         BasicTech = player.GetButtonDown("Attack");
         SpecialTech = player.GetButtonDown("Special");
         SpecialTechRelease = player.GetButtonUp("Special");
@@ -1037,6 +1052,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void Die()
     {
+        fightTracker.GetComponent<FightHandler>().activeFighters--;
         gameObject.SetActive(false);
     }
 }

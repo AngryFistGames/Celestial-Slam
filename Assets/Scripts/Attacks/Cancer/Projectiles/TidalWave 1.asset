@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TidalWave 1
   m_EditorClassIdentifier: 
   trajectory: {x: -100, y: 0}
-  damagePower: 30
+  damagePower: 40
   priorityPower: 6
   knockback: {x: 1, y: 16}
   GuardBreaking: 1
@@ -22,3 +22,5 @@ MonoBehaviour:
   doesRikochet: 0
   rikochetAngle: {x: 0, y: 0}
   launchPoint: {x: -1.5, y: 0}
+  flinchless: 0
+  launcher: 

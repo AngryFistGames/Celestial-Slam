@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: WavePillar
   m_EditorClassIdentifier: 
   trajectory: {x: 0, y: 0}
-  damagePower: 1.5
+  damagePower: 55
   priorityPower: 8
-  knockback: {x: 5, y: 22}
+  knockback: {x: 10, y: 22}
   GuardBreaking: 1.5
   gripLoss: 0.7
   charge: 0
   doesRikochet: 0
   rikochetAngle: {x: 0, y: 0}
   launchPoint: {x: 0, y: 0}
+  flinchless: 0
+  launcher: 

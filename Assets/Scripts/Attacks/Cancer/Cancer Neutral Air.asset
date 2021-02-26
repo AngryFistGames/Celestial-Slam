@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackName: Air Bubble Barrier
   animationName: CancerNeutralAir
-  damagePower: 6
+  damagePower: 8
   priorityPower: 2
   knockback: {x: 13, y: 9}
   GuardBreaking: 2

@@ -28,7 +28,7 @@ public class PlayerTracker : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         shrinkTimer -= Time.deltaTime;
         if (shrinkTimer < 0)
@@ -39,7 +39,7 @@ public class PlayerTracker : MonoBehaviour
             }
         }
         hitPoints = playerSelected.HP - playerSelected.damage;
-        if (hitPoints <= 0)
+        if (hitPoints < 0)
         {
             defeated = true;
         }

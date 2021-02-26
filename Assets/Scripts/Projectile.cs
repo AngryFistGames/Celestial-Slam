@@ -119,7 +119,7 @@ public class Projectile : MonoBehaviour
     }
 
 
-            public void OnCollisionEnter2D(Collision2D collision)
+            public void OnTriggerEnter2D(Collider2D collision)
             {
                 if ((collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Cieling" || collision.gameObject.tag == "Left" || collision.gameObject.tag == "Right") && (!collision.gameObject.CompareTag(floor)) )
                 {
@@ -136,13 +136,14 @@ public class Projectile : MonoBehaviour
                         anim.SetTrigger("done");
                     }
                 }
-        if (collision.gameObject.CompareTag("Player") && (!collision.gameObject.GetComponent<PlayerScript>().dodging) && (collision.gameObject.name != characterName + (GetComponentInParent<PlayerTracker>().playerNumber + 1)))
+        if (collision.gameObject.CompareTag("Player") && (!collision.gameObject.GetComponent<PlayerScript>().dodging) && (collision.gameObject.name != characterName + (GetComponentInParent<PlayerTracker>().playerNumber)))
         {
             if (anim != null)
             {
                 anim.SetTrigger("done");
             }
         }
+
             }
             IEnumerator EnableCollider()
             {
