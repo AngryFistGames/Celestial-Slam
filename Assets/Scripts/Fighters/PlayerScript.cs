@@ -95,7 +95,10 @@ public class PlayerScript : MonoBehaviour
     protected void Awake()
     {
         fightTracker = GameObject.FindGameObjectWithTag("GameController");
-        fightTracker.GetComponent<FightHandler>().activeFighters++;
+        if (fightTracker != null)
+        {
+            fightTracker.GetComponent<FightHandler>().activeFighters++;
+        }
         anim = GetComponent<Animator>();
         Shaker = GameObject.FindGameObjectWithTag("Shake");
         maxGrip = fighter.weight;
@@ -242,28 +245,58 @@ public class PlayerScript : MonoBehaviour
                     currentCombo++;
 
                 }
-                if (faceRight)
+                if (Target.CompareTag("Floor") || Target.CompareTag("Right"))
                 {
-                    if (localHoriz > 0.75)
+                    if (faceRight)
                     {
-                        Attack(6);
-                    }
+                        if (localHoriz > 0.75)
+                        {
+                            Attack(6);
+                        }
 
-                    if (localHoriz < -0.75)
+                        if (localHoriz < -0.75)
+                        {
+                            Attack(9);
+                        }
+                    }
+                    if (!faceRight)
                     {
-                        Attack(9);
+                        if (localHoriz > 0.75)
+                        {
+                            Attack(9);
+                        }
+
+                        if (localHoriz < -0.75)
+                        {
+                            Attack(6);
+                        }
                     }
                 }
-                if (!faceRight)
+                if (Target.CompareTag("Cieling") || Target.CompareTag("Left"))
                 {
-                    if (localHoriz > 0.75)
+                    if (faceRight)
                     {
-                        Attack(9);
-                    }
+                        if (localHoriz < -0.75)
+                        {
+                            Attack(6);
+                        }
 
-                    if (localHoriz < -0.75)
+                        if (localHoriz > 0.75)
+                        {
+                            Attack(9);
+                        }
+                    }
+                    if (!faceRight)
                     {
-                        Attack(6);
+                        if (localHoriz < -0.75)
+                        {
+                            Attack(9);
+                        }
+
+                        if (localHoriz > 0.75)
+                        {
+                            Attack(6);
+                        }
                     }
                 }
                 if (localVert < -0.75)
@@ -358,22 +391,41 @@ public class PlayerScript : MonoBehaviour
                 }
 
             }
-            if (fightTracker.GetComponent<FightHandler>().fightStarted)
+            if (fightTracker != null)
             {
-                actionCooldown += Time.deltaTime;
-
-                if (Time.time - lastComboTime >= maxComboDelay)
+                if (fightTracker.GetComponent<FightHandler>().fightStarted)
                 {
-                    currentCombo = 0;
-                }
-                if (jump)
-                {
-                    jumpTimer = Time.time + jumpDelay;
-                }
-                sTarget = Target.gameObject.tag;
+                    actionCooldown += Time.deltaTime;
 
-                statemachine.Tick();
+                    if (Time.time - lastComboTime >= maxComboDelay)
+                    {
+                        currentCombo = 0;
+                    }
+                    if (jump)
+                    {
+                        jumpTimer = Time.time + jumpDelay;
+                    }
+                    sTarget = Target.gameObject.tag;
+
+                    statemachine.Tick();
+                }
             }
+        }
+        else
+        {
+            actionCooldown += Time.deltaTime;
+
+            if (Time.time - lastComboTime >= maxComboDelay)
+            {
+                currentCombo = 0;
+            }
+            if (jump)
+            {
+                jumpTimer = Time.time + jumpDelay;
+            }
+            sTarget = Target.gameObject.tag;
+
+            statemachine.Tick();
         }
         }
     
@@ -1052,7 +1104,10 @@ public class PlayerScript : MonoBehaviour
     }
     public void Die()
     {
-        fightTracker.GetComponent<FightHandler>().activeFighters--;
+        if (fightTracker != null)
+        {
+            fightTracker.GetComponent<FightHandler>().activeFighters--;
+        }
         gameObject.SetActive(false);
     }
 }

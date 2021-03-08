@@ -561,7 +561,7 @@ public class Jump : IState
 
         anim.SetBool("grounded", false);
         anim.SetBool("damaged", false);
-        
+        _player.actionCooldown = 0;
     }
     public void Tick()
     {
@@ -709,7 +709,7 @@ public class Jump : IState
     }
     public void OnExit()
     {
-        _player.actionCooldown = -0.8f;
+        _player.actionCooldown = -0.5f;
     }
 }
 public class Idle : IState
@@ -731,6 +731,7 @@ public class Idle : IState
         anim.SetBool("Guard", false);
         anim.SetFloat("speed", 0f);
         anim.SetBool("damaged", false);
+       
     }
     public void Tick()
     {

@@ -1,0 +1,1112 @@
+fileFormatVersion: 2
+guid: c2af26902d33a2b46bd42d44caf55b3c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7143633165499753668
+    second: DracoHead1
+  - first:
+      213: -3755560270928798024
+    second: DracoTorso1
+  - first:
+      213: 3890122807721519296
+    second: Draco1_2
+  - first:
+      213: -7587820458840094107
+    second: DracoLeftBicep1
+  - first:
+      213: -7500600406299775328
+    second: DracoLeftBicep
+  - first:
+      213: 5298136179874907976
+    second: DracoLeftForearm1
+  - first:
+      213: 7633676711435521554
+    second: DracoWing1
+  - first:
+      213: 2385707906353298111
+    second: DracoTongue1
+  - first:
+      213: -4946561029935527526
+    second: DracoRightForearm1
+  - first:
+      213: -2268424474345079740
+    second: DracoLeftClaw1
+  - first:
+      213: 3532106624900783063
+    second: DracoLeftClaw3
+  - first:
+      213: 4701140715911905507
+    second: DracoLeftClaw4
+  - first:
+      213: 407680140928066135
+    second: DracoMouth1
+  - first:
+      213: -7240845460688944545
+    second: DracoLeftClaw2
+  - first:
+      213: 6491486498616595666
+    second: DracoJaw1
+  - first:
+      213: 1810662977022836921
+    second: DracoRightHand1
+  - first:
+      213: -2468402107202700075
+    second: DracoLeftHand1
+  - first:
+      213: 9066842548496222142
+    second: DracoLeftToe3
+  - first:
+      213: -8676165050974728773
+    second: DracoLeftFoot1
+  - first:
+      213: -1450363038546491559
+    second: DracoTail1
+  - first:
+      213: -5511331570671912641
+    second: DracoChin1
+  - first:
+      213: -8684652284652355196
+    second: DracoNeck1
+  - first:
+      213: -4954068130503268759
+    second: DracoRightClaw1
+  - first:
+      213: -5058237554339889925
+    second: DracoRightClaw2
+  - first:
+      213: -8409328520730505192
+    second: DracoRightClaw3
+  - first:
+      213: -4019012116194520618
+    second: DracoRightClaw4
+  - first:
+      213: 1458832419363254108
+    second: DracoLeftToe2
+  - first:
+      213: -3302444635382556376
+    second: DracoLeftToe1
+  - first:
+      213: 6384126351900807836
+    second: DracoShoulder1
+  - first:
+      213: 5108716132598746552
+    second: DracoEye1
+  - first:
+      213: 3486618306289093330
+    second: DracoRightThigh1
+  - first:
+      213: 7091341136102578248
+    second: DracoRightCalf1
+  - first:
+      213: 24707848085487010
+    second: DracoRightToe3
+  - first:
+      213: 3094113816441228405
+    second: DracoRightToe1
+  - first:
+      213: 1191497751677620031
+    second: DracoLeftThigh1
+  - first:
+      213: 8291732327532640884
+    second: DracoLeftCalf1
+  - first:
+      213: -7005957500883181763
+    second: DracoEye2
+  - first:
+      213: -7197274097452512788
+    second: DracoRightToe2
+  - first:
+      213: 3057114991654133494
+    second: DracoRightFoot1
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: tvOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Lumin
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DracoHead1
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 951
+        width: 431
+        height: 324
+      alignment: 9
+      pivot: {x: 0.35505334, y: 0.28965664}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3b10bc0c77bcdc90800000000000000
+      internalID: -7143633165499753668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoTorso1
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 506
+        width: 426
+        height: 718
+      alignment: 9
+      pivot: {x: 0.37112758, y: 0.34707633}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8be18b6d4d191ebc0800000000000000
+      internalID: -3755560270928798024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Draco1_2
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 1221
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c8e2e6351e7cf530800000000000000
+      internalID: 3890122807721519296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftBicep1
+      rect:
+        serializedVersion: 2
+        x: 1110
+        y: 997
+        width: 221
+        height: 248
+      alignment: 9
+      pivot: {x: 0.9454329, y: 0.75953674}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56a0563ae75a2b690800000000000000
+      internalID: -7587820458840094107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftBicep
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 967
+        width: 206
+        height: 303
+      alignment: 9
+      pivot: {x: 0.07727051, y: 0.7186739}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aee95c9ba388e790800000000000000
+      internalID: -7500600406299775328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftForearm1
+      rect:
+        serializedVersion: 2
+        x: 1634
+        y: 992
+        width: 184
+        height: 272
+      alignment: 9
+      pivot: {x: 0.20163229, y: 0.938473}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 847c61de8c2c68940800000000000000
+      internalID: 5298136179874907976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoWing1
+      rect:
+        serializedVersion: 2
+        x: 1901
+        y: 735
+        width: 1318
+        height: 497
+      alignment: 9
+      pivot: {x: 0.33194864, y: 0.97993845}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21e494b268440f960800000000000000
+      internalID: 7633676711435521554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoTongue1
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 841
+        width: 207
+        height: 105
+      alignment: 9
+      pivot: {x: 0.13418534, y: 0.68029433}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fba770863bcbb1120800000000000000
+      internalID: 2385707906353298111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoRightForearm1
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 587
+        width: 165
+        height: 349
+      alignment: 9
+      pivot: {x: 0.5573664, y: 0.97734094}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9907e683f84a5bb0800000000000000
+      internalID: -4946561029935527526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftClaw1
+      rect:
+        serializedVersion: 2
+        x: 1251
+        y: 712
+        width: 151
+        height: 140
+      alignment: 9
+      pivot: {x: 0.85103625, y: 0.86509615}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44cfbde85ffe480e0800000000000000
+      internalID: -2268424474345079740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftClaw3
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 709
+        width: 119
+        height: 172
+      alignment: 9
+      pivot: {x: 0.7386249, y: 0.8632092}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dbd30ee240940130800000000000000
+      internalID: 3532106624900783063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftClaw4
+      rect:
+        serializedVersion: 2
+        x: 1734
+        y: 704
+        width: 74
+        height: 177
+      alignment: 9
+      pivot: {x: 0.551164, y: 0.8957309}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e00e0bc29ecd3140800000000000000
+      internalID: 4701140715911905507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoMouth1
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 710
+        width: 235
+        height: 114
+      alignment: 9
+      pivot: {x: 0.11332605, y: 0.81551534}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 752affd9dee58a500800000000000000
+      internalID: 407680140928066135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftClaw2
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 717
+        width: 159
+        height: 115
+      alignment: 9
+      pivot: {x: 0.8929052, y: 0.77984834}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52c22aca69538b90800000000000000
+      internalID: -7240845460688944545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoJaw1
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 575
+        width: 259
+        height: 121
+      alignment: 9
+      pivot: {x: 0.0906831, y: 0.8598441}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d4594eb394661a50800000000000000
+      internalID: 6491486498616595666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoRightHand1
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 563
+        width: 114
+        height: 142
+      alignment: 9
+      pivot: {x: 0.36715108, y: 0.69997436}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b0c5616264c02910800000000000000
+      internalID: 1810662977022836921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftHand1
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 563
+        width: 113
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.93581957}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dc7b559c597ebdd0800000000000000
+      internalID: -2468402107202700075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftToe3
+      rect:
+        serializedVersion: 2
+        x: 1663
+        y: 585
+        width: 98
+        height: 71
+      alignment: 9
+      pivot: {x: 0.80907583, y: 0.6333163}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb7c3897245e3dd70800000000000000
+      internalID: 9066842548496222142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftFoot1
+      rect:
+        serializedVersion: 2
+        x: 1799
+        y: 569
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.44084072, y: 0.8697448}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbd0efbbad1189780800000000000000
+      internalID: -8676165050974728773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoTail1
+      rect:
+        serializedVersion: 2
+        x: 1982
+        y: 257
+        width: 780
+        height: 436
+      alignment: 9
+      pivot: {x: 0.84221256, y: 0.61289084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 957841430864fdbe0800000000000000
+      internalID: -1450363038546491559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoChin1
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 381
+        width: 241
+        height: 164
+      alignment: 9
+      pivot: {x: 0.52356535, y: 0.3037651}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3974b20321d383b0800000000000000
+      internalID: -5511331570671912641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoNeck1
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 378
+        width: 224
+        height: 163
+      alignment: 9
+      pivot: {x: 0.6014155, y: 0.19803493}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4810387a2cae97780800000000000000
+      internalID: -8684652284652355196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoRightClaw1
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 376
+        width: 89
+        height: 179
+      alignment: 9
+      pivot: {x: 0.20221016, y: 0.83843005}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 966e448784d9f3bb0800000000000000
+      internalID: -4954068130503268759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoRightClaw2
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 378
+        width: 99
+        height: 164
+      alignment: 9
+      pivot: {x: 0.25141183, y: 0.96172947}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfcb7087eb78dc9b0800000000000000
+      internalID: -5058237554339889925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoRightClaw3
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 395
+        width: 110
+        height: 147
+      alignment: 9
+      pivot: {x: 0.24185014, y: 0.8992239}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8101c42d3401c4b80800000000000000
+      internalID: -8409328520730505192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoRightClaw4
+      rect:
+        serializedVersion: 2
+        x: 1411
+        y: 389
+        width: 104
+        height: 156
+      alignment: 9
+      pivot: {x: 0.31797203, y: 0.88832676}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d11c3226c99938c0800000000000000
+      internalID: -4019012116194520618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftToe2
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 468
+        width: 228
+        height: 85
+      alignment: 9
+      pivot: {x: 0.09315143, y: 0.56681556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5f68fe2b50de3410800000000000000
+      internalID: 1458832419363254108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftToe1
+      rect:
+        serializedVersion: 2
+        x: 1659
+        y: 373
+        width: 228
+        height: 84
+      alignment: 9
+      pivot: {x: 0.06824266, y: 0.5225376}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 829d0a9e91c5b22d0800000000000000
+      internalID: -3302444635382556376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoShoulder1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 123
+        width: 181
+        height: 228
+      alignment: 9
+      pivot: {x: 0.510459, y: 0.15127322}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92124ea719f89850800000000000000
+      internalID: 6384126351900807836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoEye1
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 251
+        width: 87
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bd0bd5614ec5e640800000000000000
+      internalID: 5108716132598746552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoRightThigh1
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 48
+        width: 211
+        height: 311
+      alignment: 9
+      pivot: {x: 0.4641119, y: 0.95044595}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2da4cbd60e4f26030800000000000000
+      internalID: 3486618306289093330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoRightCalf1
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 60
+        width: 190
+        height: 299
+      alignment: 9
+      pivot: {x: 0.8188361, y: 0.9178729}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84852861131896260800000000000000
+      internalID: 7091341136102578248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoRightToe3
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 259
+        width: 74
+        height: 90
+      alignment: 9
+      pivot: {x: 0.9093166, y: 0.6051724}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2adbc4c28a7c75000800000000000000
+      internalID: 24707848085487010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoRightToe1
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 264
+        width: 103
+        height: 77
+      alignment: 9
+      pivot: {x: 0.20592669, y: 0.52458644}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c8b9b6f1080fa20800000000000000
+      internalID: 3094113816441228405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftThigh1
+      rect:
+        serializedVersion: 2
+        x: 1509
+        y: 26
+        width: 199
+        height: 331
+      alignment: 9
+      pivot: {x: 0.24314812, y: 0.87175506}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3fcb6f64ec098010800000000000000
+      internalID: 1191497751677620031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoLeftCalf1
+      rect:
+        serializedVersion: 2
+        x: 1746
+        y: 137
+        width: 174
+        height: 215
+      alignment: 9
+      pivot: {x: 0.7719958, y: 0.9226435}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47ab433de96221370800000000000000
+      internalID: 8291732327532640884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoEye2
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 172
+        width: 71
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3fdf58a5c6d5ce90800000000000000
+      internalID: -7005957500883181763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoRightToe2
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 146
+        width: 152
+        height: 85
+      alignment: 9
+      pivot: {x: 0.07654451, y: 0.6113588}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce9093657552e1c90800000000000000
+      internalID: -7197274097452512788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DracoRightFoot1
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 123
+        width: 110
+        height: 118
+      alignment: 9
+      pivot: {x: 0.55162907, y: 0.83690643}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fed01b33ed0d6a20800000000000000
+      internalID: 3057114991654133494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 35bae09939192cf4289098a3e40eb4c2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
