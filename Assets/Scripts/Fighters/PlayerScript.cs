@@ -208,189 +208,7 @@ public class PlayerScript : MonoBehaviour
                 return;
             }
             speed = Mathf.Abs(localHoriz);
-            if ((BasicTech && actionCooldown > 0) && grounded)
-            {
-                if (localHoriz <= 0.3 && localHoriz >= -0.3 && localVert == 0)
-                {
-                    if (currentCombo < 1)
-                    {
-                        Attack(0);
-                    }
-                    else
-                    {
-                        Attack(1);
-                    }
-                }
-                if (localHoriz > 0.75 || localHoriz < -0.75)
-                {
-                    Attack(2);
-                }
-                if (localVert < -0.75)
-                {
-                    Attack(3);
-                }
-                if (localVert > 0.75)
-                {
-                    Attack(4);
-                }
-            }
-            if ((BasicTech && actionCooldown > 0) && !grounded)
-            {
-
-                if (localHoriz == 0 && localVert == 0)
-                {
-                    Attack(5);
-                    actionCooldown = -attack.recharge;
-                    canMove = false;
-                    currentCombo++;
-
-                }
-                if (Target.CompareTag("Floor") || Target.CompareTag("Right"))
-                {
-                    if (faceRight)
-                    {
-                        if (localHoriz > 0.75)
-                        {
-                            Attack(6);
-                        }
-
-                        if (localHoriz < -0.75)
-                        {
-                            Attack(9);
-                        }
-                    }
-                    if (!faceRight)
-                    {
-                        if (localHoriz > 0.75)
-                        {
-                            Attack(9);
-                        }
-
-                        if (localHoriz < -0.75)
-                        {
-                            Attack(6);
-                        }
-                    }
-                }
-                if (Target.CompareTag("Cieling") || Target.CompareTag("Left"))
-                {
-                    if (faceRight)
-                    {
-                        if (localHoriz < -0.75)
-                        {
-                            Attack(6);
-                        }
-
-                        if (localHoriz > 0.75)
-                        {
-                            Attack(9);
-                        }
-                    }
-                    if (!faceRight)
-                    {
-                        if (localHoriz < -0.75)
-                        {
-                            Attack(9);
-                        }
-
-                        if (localHoriz > 0.75)
-                        {
-                            Attack(6);
-                        }
-                    }
-                }
-                if (localVert < -0.75)
-                {
-                    Attack(7);
-                }
-                if (localVert > 0.75)
-                {
-                    Attack(8);
-
-                }
-            }
-
-            if ((SpecialTech && actionCooldown > 0) && grounded)
-            {
-                if (localHoriz <= 0.3 && localHoriz >= -0.3 && localVert == 0)
-                {
-                    Attack(10);
-                }
-
-                if (localHoriz > 0.75 || localHoriz < -0.75)
-                {
-                    Attack(12);
-
-
-                }
-
-
-                if (localVert < -0.75)
-                {
-                    Attack(14);
-
-                }
-                if (localVert > 0.75)
-                {
-                    Attack(16);
-
-                }
-
-            }
-
-            if (SpecialTechRelease)
-            {
-                if (storedProjectile != null)
-                {
-                    anim.SetTrigger("unleashed");
-                    if (attackCharge >= 1)
-                    {
-
-                        if (faceRight)
-                        {
-                            switch (Target.gameObject.tag)
-                            {
-                                case "Floor":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                    break;
-                                case "Cieling":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                    break;
-                                case "Right":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                    break;
-                                case "Left":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                    break;
-                            }
-                        }
-                        if (!faceRight)
-                        {
-                            switch (Target.gameObject.tag)
-                            {
-                                case "Floor":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                    break;
-                                case "Cieling":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                    break;
-                                case "Right":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                    break;
-                                case "Left":
-                                    Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
-                                    break;
-                            }
-                        }
-
-                        currentCombo++;
-
-                        actionCooldown = -attack.recharge;
-                    }
-
-                }
-
-            }
+            AttackInput();
             if (fightTracker != null)
             {
                 if (fightTracker.GetComponent<FightHandler>().fightStarted)
@@ -449,7 +267,6 @@ public class PlayerScript : MonoBehaviour
         anim.SetBool("leap", lineRenderer.enabled);
         anim.SetFloat("speed", speed);
         anim.SetInteger("charge", attackCharge);
-        //anim.SetBool("damaged", isDamaged);
         leapCooldown -= Time.deltaTime;
         if (Guard >= 100)
         {
@@ -458,6 +275,193 @@ public class PlayerScript : MonoBehaviour
         if (Guard < 0)
         {
             Guard = 0;
+        }
+    }
+
+    public virtual void AttackInput()
+    {
+        if ((BasicTech && actionCooldown > 0) && grounded)
+        {
+            if (localHoriz <= 0.3 && localHoriz >= -0.3 && localVert == 0)
+            {
+                if (currentCombo < 1)
+                {
+                    Attack(0);
+                }
+                else
+                {
+                    Attack(1);
+                }
+            }
+            if (localHoriz > 0.75 || localHoriz < -0.75)
+            {
+                Attack(2);
+            }
+            if (localVert < -0.75)
+            {
+                Attack(3);
+            }
+            if (localVert > 0.75)
+            {
+                Attack(4);
+            }
+        }
+        if ((BasicTech && actionCooldown > 0) && !grounded)
+        {
+
+            if (localHoriz == 0 && localVert == 0)
+            {
+                Attack(5);
+                actionCooldown = -attack.recharge;
+                canMove = false;
+                currentCombo++;
+
+            }
+            if (Target.CompareTag("Floor") || Target.CompareTag("Right"))
+            {
+                if (faceRight)
+                {
+                    if (localHoriz > 0.75)
+                    {
+                        Attack(6);
+                    }
+
+                    if (localHoriz < -0.75)
+                    {
+                        Attack(9);
+                    }
+                }
+                if (!faceRight)
+                {
+                    if (localHoriz > 0.75)
+                    {
+                        Attack(9);
+                    }
+
+                    if (localHoriz < -0.75)
+                    {
+                        Attack(6);
+                    }
+                }
+            }
+            if (Target.CompareTag("Cieling") || Target.CompareTag("Left"))
+            {
+                if (faceRight)
+                {
+                    if (localHoriz < -0.75)
+                    {
+                        Attack(6);
+                    }
+
+                    if (localHoriz > 0.75)
+                    {
+                        Attack(9);
+                    }
+                }
+                if (!faceRight)
+                {
+                    if (localHoriz < -0.75)
+                    {
+                        Attack(9);
+                    }
+
+                    if (localHoriz > 0.75)
+                    {
+                        Attack(6);
+                    }
+                }
+            }
+            if (localVert < -0.75)
+            {
+                Attack(7);
+            }
+            if (localVert > 0.75)
+            {
+                Attack(8);
+
+            }
+        }
+
+        if ((SpecialTech && actionCooldown > 0) && grounded)
+        {
+            if (localHoriz <= 0.3 && localHoriz >= -0.3 && localVert == 0)
+            {
+                Attack(10);
+            }
+
+            if (localHoriz > 0.75 || localHoriz < -0.75)
+            {
+                Attack(12);
+
+
+            }
+
+
+            if (localVert < -0.75)
+            {
+                Attack(14);
+
+            }
+            if (localVert > 0.75)
+            {
+                Attack(16);
+
+            }
+
+        }
+
+        if (SpecialTechRelease)
+        {
+            if (storedProjectile != null)
+            {
+                anim.SetTrigger("unleashed");
+                if (attackCharge >= 1)
+                {
+
+                    if (faceRight)
+                    {
+                        switch (Target.gameObject.tag)
+                        {
+                            case "Floor":
+                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                break;
+                            case "Cieling":
+                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                break;
+                            case "Right":
+                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                break;
+                            case "Left":
+                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                break;
+                        }
+                    }
+                    if (!faceRight)
+                    {
+                        switch (Target.gameObject.tag)
+                        {
+                            case "Floor":
+                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                break;
+                            case "Cieling":
+                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                break;
+                            case "Right":
+                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                break;
+                            case "Left":
+                                Instantiate<GameObject>(storedProjectile, new Vector2((transform.position.x - storedProjectile.GetComponent<Projectile>().ammo.launchPoint.y), (transform.position.y + storedProjectile.GetComponent<Projectile>().ammo.launchPoint.x)), transform.rotation, GetComponentInParent<PlayerTracker>().transform);
+                                break;
+                        }
+                    }
+
+                    currentCombo++;
+
+                    actionCooldown = -attack.recharge;
+                }
+
+            }
+
         }
     }
     public void ChargeProjectile()

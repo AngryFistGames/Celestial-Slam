@@ -22,6 +22,7 @@ public class PlayerTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.GetComponentsInChildren<PlayerScript>(true)[GameController.instance.playersInFight[playerNumber].fighterSelected].gameObject.SetActive(true);
         playerSelected = GetComponentInChildren<PlayerScript>(false);
         SetHealth(1f);
         damageBar.fillAmount = barImage.fillAmount;

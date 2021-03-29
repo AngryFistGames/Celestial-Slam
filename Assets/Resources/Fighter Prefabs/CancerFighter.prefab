@@ -348,7 +348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &953209296794254531
 Transform:
   m_ObjectHideFlags: 0
@@ -457,9 +457,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a1d5d14d061a8d4399b736ecdb44501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fightTracker: {fileID: 0}
   anim: {fileID: 0}
   fighter: {fileID: 11400000, guid: 797d86d87b211d049acd6d1c6bbcc521, type: 2}
-  playerID: 1
+  playerID: 0
   rigidBody: {fileID: 953209296794254541}
   LeapAim: {fileID: 953209297230246774}
   floor:
@@ -489,6 +490,7 @@ MonoBehaviour:
   faceRight: 1
   Horiz: 0
   Vert: 0
+  Dodger: 0
   BasicTech: 0
   SpecialTech: 0
   SpecialTechRelease: 0
@@ -533,6 +535,8 @@ MonoBehaviour:
   maxGrip: 0
   gripLoss: 0
   vulnerable: 0
+  dodgeTimer: 0
+  dodgeTime: 0.001
 --- !u!1 &953209296813171068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1216,7 +1220,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.88, y: 1.43}
+  m_Size: {x: 3.37, y: 1.2199999}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

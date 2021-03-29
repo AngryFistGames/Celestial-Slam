@@ -15,7 +15,7 @@ MonoBehaviour:
   fighterName: Draco
   HitPoints: 1400
   jumpHeight: 200
-  speed: 6
+  speed: 8
   weight: 550
   BaseAttack: 1
   BaseDefense: 0.3
