@@ -730,7 +730,7 @@ public class Idle : IState
         anim.SetBool("grounded", true);
         anim.SetBool("Guard", false);
         anim.SetFloat("speed", 0f);
-        anim.SetBool("damaged", false);
+        _player.isDamaged = false;
        
     }
     public void Tick()

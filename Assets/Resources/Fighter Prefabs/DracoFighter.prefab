@@ -2198,7 +2198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030257505947346096}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.15, y: -0.8, z: 0}
+  m_LocalPosition: {x: -0.15, y: -0.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1030257507052654514}
@@ -4175,7 +4175,7 @@ GameObject:
   - component: {fileID: 1030257507012171521}
   m_Layer: 13
   m_Name: XSweet
-  m_TagString: HitBox
+  m_TagString: SweetSpot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4397,6 +4397,7 @@ MonoBehaviour:
   checkRadius: 0.2
   leapLimit: 3
   proneTimer: 0
+  jumpName: Draco_Jump
   attack: {fileID: 0}
   isPlayer: 1
   AimingRight: 1
@@ -4440,11 +4441,11 @@ MonoBehaviour:
   Guard: 100
   damage: 0
   moveSpeed: 1000
-  jumpHeight: 10
+  jumpHeight: 7
   speed: 0
   leapSpeed: 0
   maxJumpCount: 0
-  aimSpeed: 0
+  aimSpeed: 50
   maxGrip: 0
   gripLoss: 0
   vulnerable: 0

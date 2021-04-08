@@ -484,6 +484,7 @@ MonoBehaviour:
   checkRadius: 0.1
   leapLimit: 2
   proneTimer: 0
+  jumpName: Cancer_Jump
   attack: {fileID: 0}
   isPlayer: 1
   AimingRight: 1

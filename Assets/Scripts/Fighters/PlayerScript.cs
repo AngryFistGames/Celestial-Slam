@@ -33,6 +33,7 @@ public class PlayerScript : MonoBehaviour
     public float checkRadius = 0.2f;
     public float leapLimit= 3;
     public float proneTimer;
+    public string jumpName;
 
     [Header("Controls")]
     public BasicAttack attack;
@@ -735,8 +736,8 @@ public class PlayerScript : MonoBehaviour
     }
     public void Jump()
     {
-       jumpCount += 1;
-
+        anim.Play(jumpName);
+        jumpCount += 1;
         switch (GetComponent<GravBody>().attractor.gameObject.tag)
         {
             case "Floor":

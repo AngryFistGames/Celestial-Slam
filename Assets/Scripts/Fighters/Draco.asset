@@ -20,4 +20,5 @@ MonoBehaviour:
   BaseAttack: 1
   BaseDefense: 0.3
   jumpCount: 5
-  techniques: []
+  techniques:
+  - {fileID: 11400000, guid: 75f04cabc34be3e478bcde5b27a92b3a, type: 2}
